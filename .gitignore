@@ -3,14 +3,9 @@ Thumbs.db
 node_modules
 *.log
 
-htdocs/
-yarn-error.log
-db
-
 *.code-workspace
 
 # WordPress
-/wp-content/*
-!/wp-content/uploads/
-!/wp-content/plugins/
-!/wp-content/themes/
+drupal_test/*
+!/drupal_test/web/
+
