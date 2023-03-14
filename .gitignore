@@ -4,8 +4,5 @@ node_modules
 *.log
 
 *.code-workspace
-
-# WordPress
-drupal_test/*
-!/drupal_test/web/
+vendor
 
