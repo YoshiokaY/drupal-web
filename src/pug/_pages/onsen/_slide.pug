@@ -1,0 +1,52 @@
+-
+  var slides = [
+    {
+      ttl: '露天風呂',
+      en: 'OPEN-AIR BATH'
+    },
+    {
+      ttl: '大浴場',
+      en: 'BIG BATH'
+    },
+    {
+      ttl: '貸切風呂',
+      en: 'PRIVATE BATH'
+    },
+    ]
+
+<!-- ブロック：温泉スライド -->
+.slideWrapper
+  +setAnker(slides,"onsen")
+  - for (var x = 0; x < 3; x++)
+    section(class="onsenSlide" id="onsen0"+ [x+1])
+      .contentInner
+        h2.c_ttl_h2.scrollIn.up.each #{slides[x].ttl}
+          span.c_ttl_h2-en #{slides[x].en}
+        if x == 0
+          include ./_extraNote
+        ul.onsenSlideMain.scrollIn.up.each
+          - for (var y = 0; y < 10; y++)
+            li
+              .columnRow.-vertical
+                .columnBlock
+                  figure
+                    img(src=imgPath + 'onsen/onsen_slide01.jpg' alt='altが入ります' width='740' height='490' decoding='async')
+                .columnBlock
+                  h3.onsenTtl3 温泉名が入ります<br>温泉名が入ります
+                  ul.onsenTag
+                    li 露天
+                    li 昼
+                    li 露天
+                    li 昼
+                    li 露天
+                    li 昼
+                    li 露天
+                    li 昼
+                  p 朝の光、青空、そして星空。何度見ても飽きることのない風景と楽しむ温泉。ダミー<small class="cautionTxt">注釈が入ります</small><small class="cautionTxt">注釈が入ります</small>
+        ul.onsenSlideThumb.scrollIn.up
+          - for (var z = 0; z < 10; z++)
+            li
+              img(src=imgPath + 'onsen/onsen_slide01.jpg' alt='altが入ります' width='740' height='490' decoding='async')
+        if x == 2
+          include ./_extraContent
+<!-- ブロック：温泉スライド -->

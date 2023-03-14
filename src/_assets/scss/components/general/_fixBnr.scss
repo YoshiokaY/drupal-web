@@ -1,0 +1,107 @@
+@use "../../abstracts" as *;
+@use "./_svg" as *;
+@use "sass:math";
+
+.fixed-bnr {
+  position: fixed;
+  right: 5px;
+  bottom: 40px;
+  z-index: 101;
+  padding-right: calc((100% - 1120px) / 2);
+  @include mq(sp, 1299) {
+    bottom: 80px;
+  }
+
+  @include mq(sp, 750) {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding-right: spSize(36);
+    padding-left: spSize(36);
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  a {
+    @include fontsize(16, 16);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 204px;
+    height: 70px;
+    color: #fff;
+    letter-spacing: 0.15em;
+    background: var(--color02);
+    border: 1px solid var(--color02);
+
+    @include mq(sp, 750) {
+      flex-direction: row;
+      gap: 0 spSize(6);
+      align-items: flex-end;
+      width: 100%;
+      height: auto;
+      padding-top: spSize(10);
+      padding-bottom: spSize(10);
+    }
+
+    @include hover {
+      color: var(--color02);
+      background: #fff;
+    }
+
+    span {
+      @include fontsize(14, 14);
+
+      small {
+        &:not(.small02) {
+          @include fontsize(12, 12);
+        }
+
+        &.small02 {
+          @include fontsize(9, 9);
+        }
+      }
+    }
+  }
+
+  &__close {
+    display: none;
+
+    &:checked {
+      ~ a,
+      ~ .fixed-bnr__close-btn {
+        pointer-events: none;
+        opacity: 0;
+      }
+    }
+
+    &-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      background-image: var(--iconFixedBnrClose);
+      background-position: center center;
+      background-size: 16px 16px;
+      border-radius: 100%;
+      transition: 0.2s;
+      transform: translate(50%, -50%);
+
+      @include mq(sp, 750) {
+        width: spSize(16);
+        height: spSize(16);
+        background-size: spSize(16) spSize(16);
+      }
+
+      @include hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+///-----------------Q&A//
+
+.faqWrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 1em auto;
+  border-top: 1px solid $color02;
+
+  > dl {
+    position: relative;
+    width: 100%;
+    padding: 0.8em 0;
+    background: $bgBody;
+    border-bottom: 1px solid $color02;
+
+    // @media screen and (max-width : ($viewTablet - 1)+px) {
+    //   padding: 1em 1.5em;
+    // }
+
+    dt {
+      @include fontsize(24, 32);
+      position: relative;
+      width: 100%;
+      padding: 1em 2.2em 0.8em 2.5em;
+      font-family: $fontMincho;
+      font-weight: bold;
+      line-height: 1.5;
+      color: $color02;
+      letter-spacing: 0;
+      cursor: pointer;
+
+      &::before {
+        @include fontsize(34, 50);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin: auto;
+        font-family: "Cardo", serif;
+        font-weight: normal;
+        color: $color02;
+        text-align: center;
+        vertical-align: middle;
+        content: "Q.";
+        transform: translateY(-50%);
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0.5em;
+        bottom: 0;
+        left: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        padding-bottom: 3px;
+        margin: auto;
+        font-family: $baseFont;
+        font-size: 100%;
+        font-weight: bold;
+        line-height: 1;
+        content: "+";
+        // transform: rotate(135deg);
+        // border-top: 3px solid $color02;
+        // border-right: 3px solid $color02;
+        background: $bgBody;
+        border-radius: 50%;
+        box-shadow: 0 3px 6px rgba(#000, 0.16);
+
+        @media screen and (max-width: ($viewTablet - 1)+px) {
+          width: 26px;
+          height: 26px;
+        }
+      }
+
+      &.open {
+        &::after {
+          padding-top: 4px;
+          content: "−";
+          @include mq() {
+            padding-top: 0;
+          }
+        }
+      }
+    }
+
+    dd {
+      position: relative;
+      display: none;
+      width: 100%;
+      // line-height: 1.5;
+      padding: 1em 2em 0.8em 2.5em;
+      letter-spacing: 0;
+      // border-top: 1px solid $colorText;
+
+      &::before {
+        @include fontsize(34, 50);
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: auto;
+        font-family: "Cardo", serif;
+        font-weight: normal;
+        color: $color02;
+        text-align: center;
+        vertical-align: middle;
+        content: "A.";
+      }
+    }
+  }
+}

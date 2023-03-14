@@ -1,0 +1,65 @@
+//- MicrodataとWAI-ARIAに準拠したパンくずリストのmixinです。
+//- 必要に応じて`aria-current`はJavaScriptで上書きしてください。
+//- http://schema.org/BreadcrumbList
+//- https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html
+//-
+//- @param {[String, String]} 表示するテキスト、URLの順で指定します
+//-
+//- @examples Input
+//- +Breadcrumb([
+//-   ["Home", "/"],
+//-   ["About", "/about/"]
+//- ])
+//-
+//- @examples Output
+//- <nav class="st-Breadcrumb">
+//-   <ol class="st-Breadcrumb_List" itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
+//-     <li class="st-Breadcrumb_Item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
+//-       <a class="st-Breadcrumb_Link" href="/" itemprop="item">
+//-         <span itemprop="name">Home</span>
+//-       </a>
+//-       <meta itemprop="position" content="1" />
+//-     </li>
+//-     <li class="st-Breadcrumb_Item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
+//-       <a class="st-Breadcrumb_Link" href="/about/" itemprop="item" aria-current="page">
+//-         <span itemprop="name">About</span>
+//-       </a>
+//-       <meta itemprop="position" content="2" />
+//-     </li>
+//-   </ol>
+//- </nav>
+//- mixin Breadcrumb(levels)
+//-   nav.inner(aria-label="パンくずリスト" aria-hidden="true")
+//-     ol.breadcrumb(itemscope itemtype="http://schema.org/BreadcrumbList")
+//-       each level, index in levels
+//-         - var count = index + 1
+//-         - var link = level[1]
+
+//-         li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+
+//-           if count != levels.length
+//-             a(href=link itemprop="item")
+//-               span(itemprop="name") #{level[0]}
+//-             meta(itemprop="position" content!=count)
+//-           else
+//-             a(href=link itemprop="item" aria-current="page")
+//-               span(itemprop="name") #{level[0]}
+//-             meta(itemprop="position" content!=count)
+mixin Breadcrumb(levels)
+  #breadcrumbs(itemscope itemtype='http://schema.org/BreadcrumbList')
+    ul.breadcrumbs_list(itemscope itemtype="http://schema.org/BreadcrumbList")
+      each level, index in levels
+        - var count = index + 1
+        - var link = level[1]
+
+        li.breadcrumbs_list_item
+          span(itemprop='itemListElement' itemscope itemtype='http://schema.org/ListItem')
+
+          if count != levels.length
+            a.breadcrumbs_list_link(href=link itemprop="item")
+              span(itemprop="name") #{level[0]}
+              meta(itemprop="position" content!=count)
+          else
+            span.breadcrumbs_list_link(href=link itemprop="item" aria-current="page")
+              span(itemprop="name") #{level[0]}
+              meta(itemprop="position" content!=count)

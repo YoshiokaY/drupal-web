@@ -1,0 +1,94 @@
+@use "../../abstracts" as *;
+@use "sass:math";
+
+// 定義リスト
+.onsenDl {
+  > div {
+    display: flex;
+    justify-content: flex-start;
+    padding: 3.2rem 0;
+    border-bottom: 1px solid $colorGrayScale;
+    @include mq() {
+      padding: spSize(24) 0;
+    }
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+    dt {
+      width: 14rem;
+      text-align: left;
+      @include mq() {
+        width: spSize(85);
+      }
+    }
+    dd {
+      width: 100%;
+      padding-left: 1em;
+      text-align: left;
+    }
+  }
+  &.-column {
+    > div {
+      flex-direction: column;
+      dt {
+        margin-bottom: 1em;
+      }
+      dd {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+$blockMargin: 2.7rem;
+$blockWide: 5%;
+$blockSp: 20px;
+
+.c_list {
+  width: 100%;
+  padding: 0;
+  margin: auto;
+  list-style: none;
+  > li {
+    padding-left: 1em;
+    text-align: left;
+    text-indent: -1em;
+    list-style-type: none;
+    &::before {
+      margin: auto;
+      margin-right: 0.3em;
+      content: "・";
+    }
+  }
+  @for $i from 2 through 8 {
+    &.-blocks#{$i} {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em $blockMargin;
+      justify-content: flex-start;
+      > li {
+        width: calc((100% - #{$blockMargin} * (#{$i} - 1)) / #{$i});
+      }
+      @include mq() {
+        gap: $blockSp;
+        > li {
+          width: 100%;
+        }
+        &.-sp_2 {
+          > li {
+            width: calc((100% - $blockSp) / 2);
+          }
+        }
+        &.-sp_3 {
+          > li {
+            width: calc((100% - $blockSp * 2) / 3);
+          }
+        }
+      }
+    }
+  }
+}

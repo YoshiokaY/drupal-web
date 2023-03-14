@@ -1,0 +1,120 @@
+@use "../abstracts" as *;
+@use "../components/extend" as *;
+@use "../components/general/_svg" as *;
+@use "sass:math";
+
+#taoyaspendArchive {
+  padding-bottom: 120px;
+
+  @include mq(sp, 750) {
+    padding-bottom: spSize(80);
+    margin-top: spSize(40);
+  }
+
+  .contentInner {
+    max-width: 930px;
+
+    @include mq(sp, 750) {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  .c_box {
+    padding: 40px 80px;
+    margin-bottom: 86px;
+    background: #eff7f5;
+
+    @include mq(sp, 750) {
+      padding: spSize(32) spSize(40);
+    }
+
+    .c_ttl_h2 {
+      @include fontsize(24, 20);
+
+      @include mq(sp, 750) {
+        text-align: left;
+      }
+    }
+
+    p {
+      @include fontsize(14, 12);
+      margin-top: 10px;
+      letter-spacing: 0.05em;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(20);
+      }
+    }
+  }
+
+  .columnRow {
+    @include mq(sp, 750) {
+      gap: spSize(15) 0;
+      padding-right: 5%;
+      padding-left: 5%;
+    }
+
+    + .columnRow {
+      margin-top: 80px;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(56);
+      }
+    }
+
+    &:nth-of-type(odd) {
+      flex-direction: row-reverse;
+
+      .columnBlock {
+        align-items: flex-end;
+
+        .c_link-txt {
+          margin-right: auto;
+        }
+      }
+    }
+  }
+
+  .columnBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+
+    &:nth-of-type(2) {
+      width: calc(50% - 3.6%);
+    }
+
+    .c_link-txt {
+      .c_ttl_h3 {
+        letter-spacing: 0.15em;
+      }
+    }
+
+    .block-ttl {
+      width: 100%;
+      max-width: 335px;
+
+      @include mq(sp, 750) {
+        max-width: none;
+      }
+    }
+
+    p {
+      @include fontsize(14, 12);
+      max-width: 335px;
+      margin-top: 30px;
+      letter-spacing: 0.15em;
+
+      @include mq(sp, 750) {
+        max-width: none;
+        margin-top: spSize(10);
+      }
+    }
+  }
+}
+
+.scheduleContainer {
+}

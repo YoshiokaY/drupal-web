@@ -1,0 +1,73 @@
+@use "../../abstracts" as *;
+@use "sass:math";
+
+///-----------------見出し//
+
+.c_ttl {
+  &_h1 {
+    @include fontsize(nth($h1, 1), nth($h1, 2));
+    letter-spacing: 0.08em;
+    &.-lowerTtl {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &_h2 {
+    @include fontsize(nth($h2, 1), nth($h2, 2));
+    letter-spacing: 0.1em;
+    &-en {
+      display: block;
+      color: $color03;
+      @include fontsize(14);
+    }
+    &.-lowerCatch {
+      @include fontsize(nth($h1, 1), nth($h1, 2));
+      line-height: 1.3;
+    }
+
+    &.-section {
+      letter-spacing: 0.15em;
+      @include fontsize(36, 24);
+
+      .c_ttl_h2-en {
+        @include fontsize(14, 14);
+        letter-spacing: normal;
+      }
+    }
+    &.-date {
+      @include fontsize(49, 40);
+      margin-bottom: 6.3rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      @include mq() {
+        margin-bottom: spSize(27);
+      }
+    }
+  }
+  &_h3 {
+    @include fontsize(nth($h3, 1), nth($h3, 2));
+    padding: 0;
+    margin: auto;
+    letter-spacing: 0.08em;
+    //数字あり
+    &.-number {
+      padding-left: 1em;
+      line-height: 1.3;
+      text-indent: -1em;
+      &::before {
+        margin-right: 1em;
+        content: counter(number, decimal-leading-zero);
+        counter-increment: number 1;
+      }
+    }
+  }
+  &_h4 {
+    @include fontsize(nth($h4, 1), nth($h4, 2));
+    padding: 0;
+    margin: auto;
+    font-weight: normal;
+    text-align: left;
+    letter-spacing: 0.02em;
+  }
+}

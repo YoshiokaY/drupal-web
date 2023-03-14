@@ -1,0 +1,12 @@
+<!--インクルード：館内ご利用時間 -->
+-
+  let time = content.time ? content.time : [];
+
+section#facilityTime
+  .contentInner.-small
+    h2.c_ttl_h2.scrollIn.up 館内ご利用時間
+    for val in time
+      div.timeContainer.scrollIn.up.each
+        h3.c_ttl_h3 !{val.ttl}
+        +setDl(val.dl)
+<!--/インクルード：館内ご利用時間 -->

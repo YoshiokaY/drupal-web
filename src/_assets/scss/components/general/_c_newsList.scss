@@ -1,0 +1,76 @@
+@use "../../abstracts" as *;
+@use "sass:math";
+
+.c_newsList {
+  max-width: 930px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+
+  &_item {
+    padding-top: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $colorGrayScale;
+
+    @include mq(sp, 750) {
+      padding-top: spSize(20);
+      padding-bottom: spSize(20);
+    }
+
+    a {
+      text-decoration: none;
+      @include hover {
+        opacity: 0.7;
+      }
+    }
+
+    &:first-child {
+      border-top: 1px solid $colorGrayScale;
+    }
+
+    &-tagTime {
+      display: flex;
+      gap: 0 27px;
+      align-items: center;
+      margin-bottom: 10px;
+      color: $colorDark;
+
+      @include mq(sp, 750) {
+        gap: 0 spSize(27);
+      }
+
+      time {
+        @include fontsize(12, 12);
+        line-height: 1;
+      }
+
+      .c_tagList {
+        @include fontsize(8, 8);
+        display: flex;
+        gap: 0 10px;
+
+        @include mq(sp, 750) {
+          gap: 0 spSize(8);
+        }
+
+        li {
+          padding: 4px;
+          line-height: 1;
+          border: 1px solid $colorDark;
+
+          @include mq(sp, 750) {
+            padding: soSize(4);
+          }
+        }
+      }
+    }
+  }
+
+  &-btn {
+    margin-top: 80px;
+
+    @include mq(sp, 750) {
+      margin-top: spSize(38);
+    }
+  }
+}

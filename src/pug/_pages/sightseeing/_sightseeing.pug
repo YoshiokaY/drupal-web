@@ -1,0 +1,23 @@
+<!--ブロック：周辺観光 -->
+-
+  let list = content.list ? content.list : [];
+#taoyaSightseeing
+  +setAnker(list,"sightseeing")
+  each val,index in list
+    section(class="sightseeingContent" id="sightseeing0"+ [index+1])
+      .contentInner.countReset
+        h2.c_ttl_h2.scrollIn.up.each #{val.ttl}
+        each block in val.block
+          .sightseeingBlock.scrollIn.up.each
+            h3.c_ttl_h3.-number.js-accBtn !{block.ttl}#[span.icon]
+            .columnRow.js-accCon
+              .columnBlock
+                figure: img(src=imgPath + block.img, alt=block.ttl width="")
+              .columnBlock
+                p.sightseeingBlock_txt !{block.txt}
+                p.sightseeingBlock_time !{block.time}
+                if block.link !== ''
+                  .sightseeingBlock_link
+                    a.c_link-txt(href=block.link target="_blank" rel="noopener noreferrer") 公式サイトはこちら
+
+<!--/ブロック：周辺観光 -->

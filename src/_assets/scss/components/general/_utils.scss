@@ -1,0 +1,250 @@
+@use "../../abstracts" as *;
+@use "../../components/_extend" as *;
+
+//隠しテキスト
+.visually-hidden {
+  @extend %textHidden;
+}
+
+//数字リセット（親要素以上に指定）//
+.countReset {
+  overflow: hidden;
+  counter-reset: number 0;
+}
+
+a.-disable {
+  pointer-events: none;
+}
+
+.clearFix {
+  @include clearfix();
+}
+
+.objectFit {
+  object-fit: contain;
+  font-family: "object-fit: contain;";
+}
+
+.cautionTxt {
+  display: block;
+  padding-left: 1.5em;
+  margin: 1em auto;
+  line-height: 1.5;
+  text-indent: -1.5em;
+  @include fontsize(12);
+
+  &::before {
+    margin-right: 0.5em;
+    content: "※";
+  }
+}
+
+///-----------------グーグルマップ・YouTube//
+
+.frameWrapper,
+.youtubeWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 26rem;
+  padding-top: 48%;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+//-----------------文字装飾//
+
+.-bold {
+  font-weight: bold !important;
+}
+
+.-gothic {
+  font-family: $fontGothic !important;
+}
+
+.-mincho {
+  font-family: $fontYuji !important;
+}
+
+.textImg {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+.-textIndent {
+  text-indent: 1em;
+}
+
+.-textLeft {
+  text-align: left !important;
+}
+.-textCenter {
+  text-align: center !important;
+}
+.-textRight {
+  text-align: right !important;
+}
+
+@include mq(min) {
+  .pc-textCenter {
+    text-align: center !important;
+  }
+  .pc-textRight {
+    text-align: right !important;
+  }
+  .pc-textLeft {
+    text-align: left !important;
+  }
+}
+
+@include mq() {
+  .sp-textCenter {
+    text-align: center !important;
+  }
+  .sp-textRight {
+    text-align: right !important;
+  }
+  .sp-textLeft {
+    text-align: left !important;
+  }
+}
+
+.-textTop {
+  vertical-align: top !important;
+}
+.-textMiddle {
+  vertical-align: middle !important;
+}
+.-textBottom {
+  vertical-align: bottom !important;
+}
+
+.-textTable {
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+  table-layout: fixed;
+}
+
+.-textSmall {
+  font-size: 80%;
+}
+.-textLarge {
+  @include fontsize(16, 28);
+}
+
+.highlight {
+  background: $color04;
+}
+
+.-inversion {
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: $colorTextReversal;
+    &:after,
+    &:before {
+      background-color: $colorTextReversal;
+      border-color: $colorTextReversal;
+    }
+    span {
+      color: $colorTextReversal;
+    }
+  }
+  p,
+  li,
+  td,
+  th,
+  a,
+  figcaption {
+    color: $colorTextReversal;
+  }
+}
+
+//余白
+@for $i from 0 through 40 {
+  .mb#{$i*5} {
+    margin-bottom: #{$i * 5}px !important;
+  }
+  .mt#{$i*5} {
+    margin-top: #{$i * 5}px !important;
+  }
+  .pb#{$i*5} {
+    padding-bottom: #{$i * 5}px !important;
+  }
+  .pt#{$i*5} {
+    padding-top: #{$i * 5}px !important;
+  }
+}
+
+//フォントサイズ
+@for $i from 12 through 50 {
+  .font#{$i} {
+    font-size: #{$i * 0.1}rem !important;
+  }
+  @media screen and (max-width: ($viewTablet - 1)+px) {
+    .-sp_font#{$i} {
+      font-size: #{$i * 0.1}rem !important;
+    }
+  }
+}
+
+// /*/-----------------PC＆SP*/
+
+@include mq(min) {
+  .pcOnly {
+    display: block;
+  }
+  img.pcOnly {
+    display: inline;
+  }
+  .spOnly {
+    display: none !important;
+  }
+}
+@include mq() {
+  .pcOnly {
+    display: none !important;
+  }
+  .spOnly {
+    display: block;
+  }
+  img.spOnly {
+    display: inline;
+  }
+}
+@include mq(pc, $header_breakPoint) {
+  header {
+    .pcOnly {
+      display: block;
+    }
+    img.pcOnly {
+      display: inline;
+    }
+    .spOnly {
+      display: none !important;
+    }
+  }
+}
+@include mq(sp, $header_breakPoint) {
+  header {
+    .pcOnly {
+      display: none !important;
+    }
+    .spOnly {
+      display: block;
+    }
+    img.spOnly {
+      display: inline !important;
+    }
+  }
+}

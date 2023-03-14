@@ -1,0 +1,440 @@
+@use "../../abstracts" as *;
+@use "./_svg" as *;
+@use "sass:math";
+
+.modal_wrapper.vacancy-search-modal {
+  .vacancy-search-modal__hr {
+    max-width: 740px;
+    padding: 0;
+    margin: 48px auto;
+    border-top: 1px solid $colorGrayScale;
+
+    @include mq(sp, 750) {
+      margin-top: spSize(40);
+      margin-bottom: spSize(40);
+    }
+  }
+
+  .modal_inner {
+    width: 930px;
+    padding: 24px 24px 60px;
+    background: #eff7f5;
+
+    @include mq(sp, 750) {
+      width: 550px;
+      padding: spSize(24) spSize(24) spSize(60);
+    }
+
+    .cancel {
+      position: relative;
+      top: 0;
+      right: 0;
+      display: block;
+      width: 32px;
+      height: 32px;
+      margin-left: auto;
+
+      @include mq(sp, 750) {
+        width: spSize(20);
+        height: spSize(20);
+      }
+
+      img {
+        width: 100%;
+        opacity: 0;
+      }
+
+      &::before,
+      &::after {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 1px;
+        margin: auto;
+        content: "";
+        background: #000;
+        transform-origin: center center;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    .modal_ttl {
+      @include fontsize(24, 24);
+      padding-bottom: 0;
+      margin-bottom: 0;
+      font-weight: normal;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      border-bottom: none;
+
+      span {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .form_wrapper {
+    max-width: 740px;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+  }
+
+  .form_inner {
+    margin-top: 32px;
+
+    @include mq(sp, 750) {
+      margin-top: spSize(19);
+    }
+
+    .form_row {
+      &-col02 {
+        position: relative;
+        gap: 0 30px;
+
+        @include mq(sp, 750) {
+          flex-direction: column;
+          gap: spSize(20) 0;
+        }
+
+        .room {
+          position: absolute;
+          margin: 0;
+          pointer-events: none;
+        }
+
+        .form_parts {
+          width: 50%;
+
+          @include mq(sp, 750) {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .form_item_ttl,
+    .form_parts_box_ttl {
+      @include fontsize(14, 14);
+      font-weight: normal;
+    }
+
+    .form_parts {
+      &.date-picker {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+
+        @include mq(sp, 750) {
+          flex-direction: column;
+        }
+
+        .form_item_ttl {
+          width: calc(3em + 16px);
+          margin: 0;
+          font-weight: normal;
+
+          @include mq(sp, 750) {
+            width: 100%;
+            margin-bottom: 8px;
+          }
+        }
+
+        .input_wrapper {
+          width: calc(100% - 60px);
+          line-height: 1;
+
+          @include mq(sp, 750) {
+            width: 100%;
+          }
+
+          &::after {
+            @extend %bgIconCalenderBlack;
+            width: 16px;
+            height: 15px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 16px 15px;
+
+            @include mq(sp, 750) {
+              width: spSize(17);
+              height: spSize(16);
+              background-size: spSize(17) spSize(16);
+            }
+          }
+        }
+      }
+
+      &_box {
+        &.adults {
+          display: flex;
+          gap: 0 30px;
+          margin-bottom: 0;
+          background: none;
+
+          @include mq(sp, 750) {
+            gap: 0 spSize(17);
+          }
+
+          .form_parts {
+            padding: 0 !important;
+          }
+        }
+
+        &-item {
+          display: flex;
+          align-items: center;
+          width: 50%;
+
+          @include mq(sp, 750) {
+            flex-direction: column;
+            gap: spSize(8) 0;
+            justify-content: flex-start;
+          }
+
+          .form_parts_box_ttl {
+            @include fontsize(14, 14);
+            width: calc(3em + 16px);
+            padding: 0;
+            text-align: left;
+            background: none;
+
+            @include mq(sp, 750) {
+              width: 100%;
+            }
+          }
+
+          .form_parts_box_content {
+            width: calc(100% - 60px);
+
+            @include mq(sp, 750) {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .input_wrapper {
+        border: 1px solid $colorGrayScale;
+
+        .select {
+          width: 100%;
+          height: auto;
+          padding: 14px 16px;
+          margin: 0;
+          line-height: 1;
+          border-radius: 0;
+          @include fontsize(12, 12);
+
+          @include mq(sp, 750) {
+            padding: spSize(16) spSize(14);
+          }
+        }
+      }
+
+      &.select-normal {
+        .select_wrapper {
+          display: block;
+          width: 100%;
+          margin-right: 0;
+          overflow: hidden;
+          line-height: 1;
+          border: 1px solid $colorGrayScale;
+
+          .select {
+            width: 100%;
+            height: auto;
+            padding: 14px 16px;
+            margin: 0;
+            border-radius: 0;
+            -webkit-appearance: none;
+            appearance: none;
+            @include fontsize(12, 12);
+
+            @include mq(sp, 750) {
+              padding: spSize(16) spSize(14);
+            }
+          }
+
+          &::after {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            display: block;
+            width: 6px;
+            height: 4px;
+            margin-top: 0;
+            content: "";
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 6px 4px;
+            border: none;
+            transform: translateY(-50%);
+            @extend %bgSelectBoxArrow;
+
+            @include mq(sp, 750) {
+              width: spSize(6);
+              height: spSize(4);
+              background-size: soSize(6) spSize(4);
+            }
+          }
+        }
+      }
+
+      &.submit_button {
+        width: 100%;
+        margin-top: 40px;
+        box-shadow: none;
+
+        @include mq(sp, 750) {
+          margin-top: spSIze(40);
+        }
+
+        button.c_btn {
+          padding: 1em 1.5em 1em 2rem;
+          margin: 0;
+          margin-right: auto;
+          margin-left: auto;
+          background: var(--color03);
+          border-radius: 0;
+          @include fontsize(16);
+
+          &::after {
+            top: 0;
+            left: auto;
+            width: 2rem;
+            height: 2rem;
+            @include iconSearch;
+            transform: none;
+          }
+
+          @include hover {
+            color: $colorBtnText_hover !important;
+            background-color: $colorBtn_hover;
+
+            &::after {
+              right: 5%;
+              background-image: var(--iconSearch);
+            }
+          }
+        }
+      }
+    }
+
+    .block-child {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 467px;
+      margin-top: 53px;
+
+      @include mq(sp, 750) {
+        flex-direction: column;
+        gap: spSize(13) 0;
+        width: 100%;
+        margin-top: spSize(20);
+      }
+
+      .form_parts_box_ttl {
+        width: calc(3em + 16px);
+        text-align: left;
+
+        @include mq(sp, 750) {
+          width: 100%;
+        }
+      }
+
+      .form_parts_box_content {
+        display: flex;
+        gap: 0 24px;
+        align-items: center;
+        width: calc(100% - 60px);
+
+        @include mq(sp, 750) {
+          flex-wrap: wrap;
+          gap: spSize(17);
+          width: 100%;
+        }
+
+        .child {
+          position: relative;
+          display: block;
+          width: calc(100% / 3);
+          margin: 0;
+          line-height: 1;
+
+          @include mq(sp, 750) {
+            width: calc(50% - spSize(8.5));
+            text-align: left;
+          }
+
+          .form_item_ttl {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-bottom: 8px;
+            line-height: 1;
+            transform: translateY(-100%);
+
+            @include mq(sp, 750) {
+              position: static;
+              padding-bottom: spSize(7);
+              transform: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .tel_wrapper {
+    max-width: 740px;
+    margin-right: auto;
+    margin-left: auto;
+
+    &-tel {
+      display: flex;
+      gap: 0 10px;
+      align-items: center;
+      margin-top: 27px;
+
+      @include mq(sp, 750) {
+        gap: 0 spSize(10);
+        margin-top: spSize(27);
+      }
+
+      .tel_icon {
+        width: 38px;
+
+        @include mq(sp, 750) {
+          width: spSize(38);
+        }
+      }
+
+      .tel_link {
+        @include fontsize(32, 32);
+      }
+    }
+
+    .tel_date {
+      @include fontsize(12, 12);
+      margin-top: 8px;
+      font-weight: normal;
+      text-align: center;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(14);
+      }
+    }
+  }
+}

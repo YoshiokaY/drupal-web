@@ -1,0 +1,54 @@
+@use "../abstracts" as *;
+@use "../components/general/svg" as *;
+
+.u_dl {
+  max-width: 930px;
+  margin-top: 80px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+
+  @include mq(sp, 750) {
+    margin-top: spSize(50);
+  }
+
+  &-item {
+    dt {
+      @include fontsize(24, 20);
+      margin-bottom: 15px;
+      letter-spacing: 0.15em;
+
+      @include mq(sp, 750) {
+        margin-bottom: 15px;
+      }
+    }
+
+    dd {
+      line-height: 2;
+      letter-spacing: 0.05em;
+      word-break: break-word;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-break: strict;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+
+      @include mq(sp, 750) {
+        margin-bottom: spSize(32);
+      }
+    }
+  }
+
+  &.-border {
+    .u_dl-item {
+      padding-bottom: 32px;
+      border-bottom: 1px solid $colorGrayScale;
+
+      @include mq(sp, 750) {
+        padding-bottom: spSize(32);
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<!--インクルード：アクセスコンテンツ -->
+-
+  let access = top.access ? top.access : [];
+
+
+section#taoyaAccess
+  .contentInner
+    h2.c_ttl_h2.-section.scrollIn.up.each アクセス
+      span.c_ttl_h2-en ACCESS
+    .columnRow.scrollIn.up.each
+      .columnBlock
+        h3.c_ttl_h3 !{page.name}
+        p !{access.addr}
+        p.-textRight: a.c_link-txt(href=access.link target="_blank" rel="noopener noreferrer") Google Mapで見る
+
+        .taoyaAccess__btn.pc
+          a.c_btn(href="/access/") アクセス
+
+      .columnBlock
+        figure
+          img(src=imgPath + "access_map.jpg", alt="アクセスマップ" width="401" height="255" loading="lazy" decoding="async")
+
+        .taoyaAccess__btn.sp
+          a(href="/access/" class="c_btn") アクセス
+
+    dl.taoyaAccess__info
+      .taoyaAccess__info-item.scrollIn.up.each
+        dt 無料駐車場
+        dd !{access.parking}
+      .taoyaAccess__info-item.scrollIn.up.each
+        dt 無料送迎バス
+        dd !{access.bass}
+      .taoyaAccess__info-item.scrollIn.up.each
+        dt デジタルパンフレット
+        dd !{access.pamphlet}
+
+<!--/インクルード：バナーコンテンツ -->

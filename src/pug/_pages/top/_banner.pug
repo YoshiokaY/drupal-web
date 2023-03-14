@@ -1,0 +1,19 @@
+<!--インクルード：バナーコンテンツ -->
+
+section#taoyaBanner
+  .contentInner
+    .taoyaBanner__item.scrollIn.up.each
+      figure
+        a(href="/cm/")
+          picture
+            source(media='(max-width: 750px)' srcset=imgPath + 'banner_img001_sp.jpg' width='335' height='112')
+            img(src=imgPath + 'banner_img001.jpg' alt='CMギャラリー' width='1050' height='200' decoding='async' loading="lazy")
+
+    .taoyaBanner__item.scrollIn.up.each
+      figure
+        a(href="/stay/")
+          picture
+            source(media='(max-width: 750px)' srcset=imgPath + 'banner_img002_sp.jpg' width='335' height='112')
+            img(src=imgPath + 'banner_img002.jpg' alt=page.name + 'での過ごし方' width='1050' height='200' decoding='async' loading="lazy")
+
+<!--/インクルード：バナーコンテンツ -->

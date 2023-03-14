@@ -1,0 +1,36 @@
+<!-- ブロック：部屋タイプ一覧 -->
+-
+  let room = content.room ? content.room : [];
+-
+  let anchor = ['スタンダードタイプのお部屋','アップグレードードタイプのお部屋'];
+
+#taoyaRooms
+  <!--ブロック：アンカーリスト -->
+  #taoyaAnchors
+    ul.contentInner
+      each link, index in anchor
+        li
+          a(href='#rooms0'+ [index+1])
+            span #{link}
+  <!--/ブロック：アンカーリスト -->
+  each val,index in room
+    section(class="rooms" id="rooms0"+ [index+1])
+      .contentInner
+        <!--ブロック：カテゴリ名 -->
+        h2.c_ttl_h2.scrollIn.up.each !{val.ttl}
+          span.c_ttl_h2-en !{val.en}
+        <!--/ブロック：カテゴリ名 -->
+        p.scrollIn.up.each !{val.txt}
+        .roomsWrapper
+          <!--ブロック：部屋リスト（繰り返し） -->
+          each block in val.block
+            .columnRow.scrollIn.up
+              .columnBlock
+                figure.rommImg: img(src=imgPath + block.img, alt=block.ttl width="464" height="310" loading="lazy" decoding="async")
+              .columnBlock
+                h3.c_ttl_h3 !{block.ttl}
+                p !{block.txt}
+                a.c_btn(href=block.link) お部屋詳細はこちら
+          <!--/ブロック：部屋リスト（繰り返し） -->
+<!--/ブロック：部屋タイプ一覧 -->
+

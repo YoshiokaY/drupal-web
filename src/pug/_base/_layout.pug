@@ -1,0 +1,35 @@
+include ../_component/_mixin
+block vars
+doctype html
+html(dir="ltr" lang="ja")
+  if slag == "top"
+    head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#")
+      include _head
+  else
+    head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#")
+      include _head
+
+
+  body(class="page" + key + ' -' + slag)
+    include ../../html/_conversion/_script3.html
+    include ../_includes/_header
+
+    main#main(aria-label="本文")
+      div#taoyaContent
+        block contents
+
+    footer#global_footer.floating
+      include ../_includes/_footer
+
+    include ../../html/_includes/_booking_modal.html
+
+    script(src="/taoya_common/js/taoya.js")
+    //- フォーカスポリフィル
+    script(src="//cdn.jsdelivr.net/npm/focus-visible@5.2.0/dist/focus-visible.min.js" integrity="sha384-xRa5B8rCDfdg0npZcxAh+RXswrbFk3g6dlHVeABeluN8EIwdyljz/LqJgc2R3KNA" crossorigin="anonymous" defer)
+    //- script(src="/include/js/jquery-3.6.1.min.js")
+    script(src="//code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous")
+    script(src="/v2_facility_common/vendor/polyfills.js")
+    script(src="/v2_facility_common/vendor/jquery.nicescroll.min.js")
+    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous")
+    script(src="/v2_facility_common/js/common.js")
+    //- script(src="/v2_facility_common/vendor/slick/slick.min.js")

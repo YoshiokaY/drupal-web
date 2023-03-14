@@ -1,0 +1,19 @@
+<!--静的：過ごし方一覧コンテンツ -->
+-
+  let blocks = content.block ? content.block : [];
+
+section#taoyaspendArchive
+  .contentInner
+    .c_box
+      h2.c_ttl_h2 !{content.lead}
+      p !{content.txt}
+    each block in blocks
+      .columnRow.scrollIn.up
+        .columnBlock
+          figure.rommImg: img(src=imgPath + block.img, alt=block.ttl width="465" height="261" loading="lazy" decoding="async")
+        .columnBlock
+          .block-ttl
+            a(href=block.link class="c_link-txt"): h3.c_ttl_h3 !{block.ttl}
+          p !{block.txt}
+
+<!--/静的：過ごし方一覧コンテンツ -->

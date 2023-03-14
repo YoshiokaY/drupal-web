@@ -1,0 +1,40 @@
+<!-- 温泉についてインクルード -->
+section#onsenAbout
+  .contentInner
+    h2.onsenTtl2.scrollIn.up.each 温泉について
+    dl.onsenDl.scrollIn.up.each
+      <!-- リスト表示部分（増減する場合は以下をコピーor削除） -->
+      div
+        dt 源泉名
+        dd !{page.onsen}
+      <!-- /リスト表示部分 -->
+      div
+        dt 泉質
+        dd !{page.senshitu}
+      div
+        dt 効能
+        dd !{page.kono}
+      div
+        dt 入浴時間
+        dd !{page.time}
+      if page.change == true
+        div
+          dt 男女入替制
+          dd
+            p あり
+      div
+        dt 注意事項
+        dd
+          ul.onsenList
+            li 刺青・タトゥー（ファッションタトゥーを含む）をされている方のご入浴は固くお断りいたします。
+            li 飲酒されている方のご入浴はくれぐれもご注意ください。
+            li オムツをご使用のお子様は備え付けのベビーバスをご利用ください。
+            li 7歳以上または身長120cm以上のお子様は、各男女性別の浴場をご利用ください。
+
+          span.cautionTxt なお、条例改正等により、今後変更になる可能性があります。
+      div
+        dt 感染症対策
+        dd 感染症防止のための取り組みに関しましては
+          a(href='https://www.ooedoonsen.jp/coronavirus/' target='_blank' rel='noopener noreferrer') こちら
+          | をご覧ください。
+<!-- /温泉についてインクルード -->

@@ -1,0 +1,150 @@
+mixin Picture (val)
+  picture
+    source(media='(max-width: 750px)' srcset=imgPath + val + '_sp.jpg' width='' height='')
+    img(src=imgPath + val + '.jpg' alt='altが入ります' width='' height='' decoding='async')
+
+//-
+  opt
+  {
+    link: 'リンク先',
+    class: 'タイトル',
+    text: '文言',
+  }
+//- mixin button (opt)
+//-   - var opt = opt||{};
+//-   - var link = opt.link?opt.link:'#';
+//-   - var class = opt.class?opt.class:'';
+//-   - var text = opt.text?opt.text:'詳しくはこちら';
+
+//-   a(href) #{text}
+
+
+
+//- slider onsenSlideMain
+mixin sliderOneColm(item, cat, count)
+  .onsenSlideMain-wrap
+    ul(class="onsenSlideMain scrollIn up each slider" + count)
+      each item in cat
+        li
+          figure
+            img(src=imgPath + item.img + '.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+            if item.caption
+              figcaption !{item.caption}
+
+  <!--//  スライド・サムネイル部分 -->
+  ul(class="onsenSlideThumb scrollIn up slider" + count)
+    <!--//  サムネイル・表示部分 -->
+    each item, index in cat
+      li(data-slide=index)
+        figure
+          img(src=imgPath + item.img + '.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+  <!--//  /サムネイル・表示部分 -->
+
+//- slider onsenSlideCenter
+mixin sliderCenterMode(item, cat, count)
+  ul.onsenSlideCenter.scrollIn.up.each
+    <!-- メイン・表示部分 -->
+    each item in cat
+      li
+        figure
+          img(src=imgPath + item.img + '.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+          if item.caption
+            figcaption !{item.caption}
+
+//- slider onsenSlideThreeColm - type menu
+mixin sliderThreeColmTypeMenu(item, cat, count)
+  ul.onsenSlideThreeColm.-type-menu.scrollIn.up.each
+    each item in cat
+      li
+        if item.href
+          a(href=item.href)
+            figure
+              img(src=imgPath + item.img + '.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+              if item.caption
+                figcaption !{item.caption}
+
+            .onsenSlideThreeColm__txt
+              if item.lead
+                p.lead !{item.lead}
+              if item.priceCaption
+                p.priceCaption !{item.priceCaption}
+              p.price !{item.price}
+                span.unit 円
+                if item.conjunction
+                  span.conjunction !{item.conjunction}
+              p.period #[span !{item.periodTtl}] !{item.periodText}
+
+        else
+          figure
+            img(src=imgPath + item.img + '.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+            if item.caption
+              figcaption !{item.caption}
+
+          .onsenSlideThreeColm__txt
+            if item.lead
+              p.lead !{item.lead}
+            if item.priceCaption
+              p.priceCaption !{item.priceCaption}
+            p.price !{item.price}
+              span.unit 円
+              if item.conjunction
+                span.conjunction !{item.conjunction}
+            p.period #[span !{item.periodTtl}] !{item.periodText}
+
+//- slider onsenSlideThreeColm - type plan
+mixin sliderThreeColmTypePlan(item, cat, count)
+  ul.onsenSlideThreeColm.-type-plan.scrollIn.up.each
+    each item in cat
+      li
+        if item.href
+          a(href=item.href)
+            figure
+              img(src=imgPath + item.img + '.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+              if item.caption
+                figcaption !{item.caption}
+
+            .onsenSlideThreeColm__txt
+              p.lead !{item.lead}
+              p.txt !{item.txt}
+
+        else
+          figure
+            img(src=imgPath + item.img + '.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+            if item.caption
+              figcaption !{item.caption}
+
+          .onsenSlideThreeColm__txt
+            p.lead !{item.lead}
+            p.txt !{item.txt}
+
+//- slider onsenSlideOneColmList
+mixin sliderOneColmList(item, cat, count)
+  ul.onsenSlideOneColmList.scrollIn.up.each
+    li
+      figure
+        img(src=imgPath + 'child_img001.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+    li
+      figure
+        img(src=imgPath + 'child_img001.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+    li
+      figure
+        img(src=imgPath + 'child_img001.jpg' alt='altが入ります' width='740' height='416' loading='lazy' decoding='async')
+
+
+mixin setAnker(txt,id)
+  <!--ブロック：アンカーリスト -->
+  #taoyaAnchors
+    ul.contentInner
+      each val, index in txt
+        li
+          a(href='#' + id +'0'+ [index+1])
+            span #{val.ttl}
+  <!--/ブロック：アンカーリスト -->
+
+mixin setDl(txt)
+  dl.u_dl.-border.scrollIn.up.each
+    <!-- リスト表示部分（増減する場合は以下をコピーor削除） -->
+    each val, index in txt
+      .u_dl-item
+        dt !{val.dt}
+        dd !{val.dd}

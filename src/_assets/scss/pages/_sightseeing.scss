@@ -1,0 +1,148 @@
+@use "../abstracts" as *;
+@use "../components/extend" as *;
+@use "../components/general/_svg" as *;
+@use "sass:math";
+
+#taoyaSightseeing {
+  padding-bottom: 120px;
+  margin-top: 2.3rem;
+
+  @include mq(sp, 750) {
+    padding-bottom: spSize(80);
+    margin-top: 0;
+  }
+
+  .sightseeingContent {
+    padding-top: 80px;
+
+    @include mq(sp, 750) {
+      padding-top: spSize(64);
+    }
+
+    &#sightseeing01 {
+      @include mq(pc, 750) {
+        padding-top: 85px;
+      }
+    }
+
+    .contentInner {
+      max-width: 930px;
+    }
+
+    .c_ttl_h2 {
+      margin-bottom: 80px;
+
+      @include mq(sp, 750) {
+        margin-bottom: spSize(53);
+      }
+    }
+
+    .sightseeingBlock {
+      border-top: 1px solid $colorGrayScale;
+
+      &:last-child {
+        border-bottom: 1px solid $colorGrayScale;
+      }
+
+      .c_ttl_h3 {
+        position: relative;
+        padding-top: 24px;
+        padding-right: 1.5em;
+        padding-bottom: 22px;
+        line-height: 1;
+        text-align: left;
+        cursor: pointer;
+
+        @include mq(sp, 750) {
+          padding-top: spSize(24);
+          padding-bottom: spSize(24);
+          padding-left: 2em;
+          line-height: 1.3;
+          text-indent: -2.3em;
+        }
+
+        .icon {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          display: block;
+          width: 16px;
+          height: 100%;
+
+          &::before,
+          &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: block;
+            content: "";
+            background: #707070;
+            transform: translate(-50%, -50%);
+          }
+
+          &::before {
+            width: 100%;
+            height: 1px;
+          }
+
+          &::after {
+            width: 1px;
+            height: 16px;
+          }
+        }
+
+        &.isActive {
+          .icon {
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .columnRow {
+        height: 0;
+        opacity: 0;
+        transition: all 0.4s;
+
+        @include mq(sp, 750) {
+          gap: spSize(20) 0;
+        }
+
+        &.isOpen {
+          padding-bottom: 40px;
+        }
+
+        .columnBlock {
+          &:nth-of-type(2) {
+            @include mq(sp, 750) {
+              padding-bottom: spSize(40);
+            }
+          }
+        }
+      }
+
+      &_txt {
+        @include fontsize(14, 14);
+        line-height: 2;
+        letter-spacing: 0.05em;
+      }
+
+      &_time {
+        @include fontsize(12, 12);
+        margin-top: 10px;
+        letter-spacing: 0.05em;
+      }
+
+      &_link {
+        margin-top: 24px;
+        text-align: right;
+
+        @include mq(sp, 750) {
+          margin-top: spSize(24);
+        }
+      }
+    }
+  }
+}

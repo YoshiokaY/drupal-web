@@ -1,0 +1,246 @@
+/* stylelint-disable no-descending-specificity */
+@use "../abstracts" as *;
+
+/****** Elad Shechter's RESET *******/
+/*** box sizing border-box for all elements ***/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+button {
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border-width: 0;
+}
+
+input::-moz-focus-inner {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+ul,
+ol,
+dd {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+cite {
+  font-style: normal;
+}
+fieldset {
+  padding: 0;
+  margin: 0;
+  border-width: 0;
+}
+
+* {
+  font-size: 100%;
+}
+
+/* CSS変数 */
+//色と文字サイズを指定
+// :root {
+//   @each $key, $color in $theme-colors {
+//     --color#{$key}: #{toRgb($color)};
+//   }
+//   --fontSize: 62.5%;
+//   --invert: none;
+//   font-size: var(--fontSize);
+//   // @media (prefers-color-scheme: dark) {
+
+//   //   // &[data-theme='dark'] {
+//   //   @each $key, $color in $dark-theme-colors {
+//   //     --color#{$key}: #{toRgb($color)};
+//   //   }
+//   // }
+// }
+
+html,
+body {
+  -webkit-text-size-adjust: 100%;
+}
+
+html {
+  overflow: auto;
+  // font-size: 16px;
+  font-size: 62.5%;
+  // transition: font-size .2s;
+  // @media screen and  ( max-width : 980px ) {
+  //   font-size: 50.5%;
+  // }
+  // @media screen and  ( max-width : ($viewTablet - 1)+px ) {
+  //   font-size: 52.5%;
+  // }
+}
+
+body {
+  box-sizing: border-box;
+  padding-top: 0;
+  overflow: hidden;
+  font-weight: normal;
+  font-feature-settings: "palt";
+  line-height: 1.6;
+  color: $colorText;
+  letter-spacing: 0.02em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  background-color: $bgBody;
+  transition: background-color 0s;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  @include fontsize(nth($baseFontSize, 1), nth($baseFontSize, 2));
+
+  * {
+    box-sizing: border-box;
+
+    &:before,
+    &:after {
+      box-sizing: inherit;
+    }
+  }
+}
+
+main {
+  min-height: 60vh;
+}
+
+button,
+input::-moz-focus-inner,
+select,
+textarea,
+table {
+  font-size: 100%;
+}
+span {
+  font-weight: inherit;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+section {
+  clear: both;
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: 0;
+}
+
+a,
+a img {
+  transition: 0.2s;
+}
+a:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+
+p a:not([class]) {
+  text-decoration: underline;
+}
+
+figure {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    vertical-align: middle;
+  }
+  figcaption {
+    margin: 1em auto;
+    text-align: left;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+li,
+td,
+th,
+dt,
+dd,
+p,
+figcaption {
+  text-align: inherit;
+}
+p {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  word-break: normal;
+  // > a:not(.btnStyle) {
+  //   color: $color02;
+  //   text-decoration: underline;
+  // }
+  // &:not(:last-of-type) {
+  //   margin-bottom: 1em;
+  // }
+}
+
+small {
+  @include fontsize(nth($smallFont, 1), nth($smallFont, 2));
+}
+
+@include mq(pc) {
+  a[href^="tel:"] {
+    text-decoration: none !important;
+    pointer-events: none;
+  }
+}
+.contentInner {
+  width: 100%;
+  max-width: $containerSize + px;
+  padding: 0;
+  margin: 0 auto;
+  @include mq(sp, $containerSize) {
+    padding: 0 15px;
+  }
+  @include mq(sp) {
+    padding: 0 5%;
+  }
+  &.-small {
+    max-width: $containerInner + px;
+  }
+}
+
+.btn_to_top {
+  z-index: 102;
+}

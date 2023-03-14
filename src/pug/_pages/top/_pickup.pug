@@ -1,0 +1,14 @@
+<!--インクルード：宿泊プランコンテンツ -->
+section#taoyaPickup
+  .contentInner
+    h2.h2.c_ttl_h2.-section.scrollIn.up.each おすすめの宿泊プラン
+      span.c_ttl_h2-en PICKUP PLAN
+    if key === 'shima'
+      p.taoyaPickup__copy.scrollIn.up.each 豪華バイキングがついたスタンダードプランを基本にいくつかのプランをご用意しております。ご希望の宿泊プランをお選びください。
+    else if key === 'nikko'
+      p.taoyaPickup__copy.scrollIn.up.each 大江戸温泉物語では、豪華バイキングがついたスタンダードプランを基本にいくつかのプランをご用意しております。ご希望の宿泊プランをお選びください。表示価格は、1名様 / 税込表記となります。
+    include ../../_includes/_pickup
+
+    .taoyaPickup__btn.scrollIn.up.each
+      a(href="/plan/" class="c_btn") 宿泊プラン・料金
+<!--・インクルード：宿泊プランコンテンツ -->

@@ -1,0 +1,66 @@
+@use "../abstracts" as *;
+@use "../components/extend" as *;
+@use "../components/general/_svg" as *;
+@use "sass:math";
+
+#taoyaCommercial {
+  padding-top: 2.4em;
+  padding-bottom: 120px;
+
+  @include mq(sp, 750) {
+    padding-top: 2em;
+    padding-bottom: spSize(80);
+  }
+
+  .contentInner {
+    max-width: 930px;
+  }
+
+  .columnRow.-blocks2 {
+    gap: 56px 33px;
+    margin-bottom: 80px;
+
+    @include mq(sp, 750) {
+      gap: spSize(24) 0;
+      margin-bottom: spSize(80);
+    }
+
+    .columnBlock {
+      @include mq(pc) {
+        width: calc((100% - 33px) / 2);
+      }
+      @include mq(sp, 750) {
+        padding-bottom: spSize(24);
+        border-bottom: 1px solid $colorGrayScale;
+      }
+    }
+
+    .c_ttl_h2 {
+      @include fontsize(24, 20);
+      margin-top: 32px;
+      text-align: left;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(24);
+      }
+    }
+
+    dl {
+      margin-top: 20px;
+      text-align: left;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(20);
+      }
+
+      dt {
+        @include fontsize(14, 12);
+        margin-bottom: 10px;
+
+        @include mq(sp, 750) {
+          margin-bottom: spSize(10);
+        }
+      }
+    }
+  }
+}

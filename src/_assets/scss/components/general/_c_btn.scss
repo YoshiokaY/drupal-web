@@ -1,0 +1,117 @@
+@use "../../abstracts" as *;
+@use "./svg" as *;
+@use "sass:math";
+
+.c_btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 36rem;
+  height: 6.4rem;
+  padding: 1em 1.5em;
+  padding-left: 2rem;
+  margin: 0 auto;
+  overflow: hidden;
+  font-weight: normal;
+  line-height: 1.5;
+  color: $colorBtnText !important;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  background: $colorBtn;
+  border: 1px solid $colorBtnBorder;
+  border-radius: 0;
+  transition: 0.4s;
+  transition: color 0.4s, background 0.4s;
+  @include fontsize(16);
+  @include mq {
+    width: spSize(335);
+    max-width: 100%;
+    height: spSize(64);
+  }
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    bottom: 0;
+    width: 2rem;
+    height: 2rem;
+    margin: auto;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    @include iconArrow;
+    transition: right 0.4s;
+  }
+  @include hover {
+    color: $colorBtnText_hover !important;
+    background-color: $colorBtn_hover;
+    transition: color 0.4s, background 0.4s;
+    &::after {
+      right: 3%;
+      background-image: var(--iconArrow);
+      transition: right 0.4s;
+    }
+  }
+  //検索ボタン
+  &.-search {
+    &::after {
+      @include iconSearch;
+    }
+    @include hover {
+      &::after {
+        right: 5%;
+        background-image: var(--iconSearch);
+      }
+    }
+  }
+  //反転ボタン
+  &.-invert {
+    color: $colorBtnText_hover !important;
+    background-color: $colorBtn_hover;
+    &::after {
+      background-image: var(--iconArrow);
+    }
+    @include hover {
+      color: $colorBtnText !important;
+      background-color: $colorBtn;
+      &::after {
+        @include iconArrow;
+      }
+    }
+    //検索・反転
+    &.-search {
+      &::after {
+        background-image: var(--iconSearch);
+      }
+      @include hover {
+        &::after {
+          @include iconSearch;
+        }
+      }
+    }
+  }
+  &.-noIcon {
+    &::after {
+      content: none;
+    }
+  }
+  &.-reverse {
+    &::after {
+      right: auto;
+      left: 5%;
+      transition: left 0.4s;
+      transform: scale(-1, 1);
+    }
+    @include hover {
+      &::after {
+        left: 3%;
+        transition: left 0.4s;
+      }
+    }
+  }
+}

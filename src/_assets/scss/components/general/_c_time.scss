@@ -1,0 +1,94 @@
+@use "../../abstracts" as *;
+@use "./svg" as *;
+@use "sass:math";
+
+.c_time {
+  margin-bottom: 8rem;
+  @include mq() {
+    margin-bottom: spSize(59);
+  }
+  &_ttl {
+    padding: 0;
+    margin-bottom: 2.4rem;
+    @include fontsize(16);
+    overflow: hidden;
+    font-weight: normal;
+    text-align: left;
+    letter-spacing: 0.02em;
+    span {
+      @include fontsize(26);
+      position: relative;
+      display: table;
+      margin-left: 0.5em;
+      font-weight: 600;
+      table-layout: fixed;
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 110%;
+        width: 100vw;
+        height: 1px;
+        margin: auto;
+        content: "";
+        background-color: $color03;
+      }
+    }
+  }
+  &_img {
+    max-width: 64rem;
+    margin: 0 auto 4rem;
+    @include mq() {
+      margin-bottom: spSize(16);
+    }
+    figcaption {
+      text-align: right;
+      @include fontsize(14, 12);
+    }
+  }
+  .pinTxt {
+    position: relative;
+    padding-left: 1.5em;
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 0.8rem;
+      height: 1.1rem;
+      margin: auto;
+      content: "";
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      @extend %iconPin;
+    }
+  }
+  .c_ttl_h3 {
+    @include fontsize(24, 20);
+    margin-bottom: 2.6rem;
+    text-align: left;
+    letter-spacing: 0.08em;
+    @include mq() {
+      margin-bottom: spSize(16);
+    }
+  }
+  p {
+    line-height: 2.1;
+    letter-spacing: 0.02em;
+    @include fontsize(14);
+  }
+  &_slides {
+    .columnRow {
+      display: flex !important;
+    }
+  }
+  &_column {
+    &_imgList {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0 2rem;
+      justify-content: center;
+    }
+  }
+}

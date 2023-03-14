@@ -1,0 +1,49 @@
+<!--インクルード：キービジュアルコンテンツ -->
+
+-
+  let imp = top.imp ? top.imp : [];
+
+section#taoyaMv
+  .mainImage
+    <!-- ブロック：キービジュアル静止画タイプの場合表示 -->
+    if key == 'nikko'
+      .slideImage.kvSlider
+        <!--ブロック：キーヴィジュアル-画像 -->
+        picture
+          source(media='(max-width: 750px)' srcset=imgPath + 'mv_img001_sp.jpg' width='' height='')
+          img(src=imgPath + 'mv_img001.jpg' alt='altが入ります' width='' height='' decoding='async')
+        <!-- /ブロック：キーヴィジュアル-画像 -->
+        picture
+          source(media='(max-width: 750px)' srcset=imgPath + 'mv_img001_sp.jpg' width='' height='')
+          img(src=imgPath + 'mv_img001.jpg' alt='altが入ります' width='' height='' decoding='async')
+      <!-- /ブロック：キービジュアル静止画タイプの場合表示 -->
+    else
+      <!-- ブロック：キービジュアル動画タイプの場合表示 -->
+      .youtubeKv
+        picture.coverImg
+          source(media='(max-width: 750px)' srcset=imgPath + 'mv_img001_sp.jpg' width='375' height='812')
+          img(src=imgPath + 'mv_img001.jpg' alt='カーバーイメージ' width='1280' height='720' decoding='async')
+        .youtubeKv__item
+          <!-- ブロック：キービジュアル-動画（PC・SPそれぞれ動画のIDを属性値に指定） -->
+          #js-youtubePc(data-ytid="mt2jZLKCGqw")
+          #js-youtubeSp(data-ytid="pRP0jry9Ua4")
+          <!-- /ブロック：キービジュアル-動画 -->
+
+  .mainCopy
+    p.copy.typTxt ゆったりと、たおやかに。
+
+  <!-- ブロック：重要なお知らせ（ある場合のみ表示） -->
+  .mainImportantMsg
+    if imp.length > 0
+      .importantMsg
+        p.importantMsg-ttl 重要なお知らせ
+        ul
+          <!-- /ブロック：重要なお知らせ-繰り返し（最大二件） -->
+          each val in imp
+            li: a(href=val.link)
+              span !{val.text}
+          <!-- /ブロック：重要なお知らせ-繰り返し（最大二件） -->
+  <!-- /ブロック：重要なお知らせ（ある場合のみ表示） -->
+  .scrollBtn
+    a(href='#taoyaSearch'): span
+<!--/インクルード：キービジュアルコンテンツ -->

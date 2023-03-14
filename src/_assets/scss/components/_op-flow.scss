@@ -1,0 +1,108 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+///-----------------フロー//
+
+.flowWrapper {
+  width: 100%;
+  padding: 0;
+  margin: auto;
+  counter-reset: number 0;
+
+  > .flowContents {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin: 10px auto 50px;
+
+    &:last-child {
+      margin: 10px auto;
+    }
+    &:not(:last-child):after {
+      position: absolute;
+      right: 0;
+      bottom: -40px;
+      left: 0;
+      display: block;
+      width: 0;
+      height: 0;
+      margin: auto;
+      content: "";
+      border-color: $color01 transparent transparent transparent;
+      border-style: solid;
+      border-width: 30px 25px 0 25px;
+    }
+  }
+}
+
+.flowTitle {
+  span {
+    margin-right: 0.5em;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: $color01;
+    letter-spacing: 0;
+    vertical-align: baseline;
+
+    &:after {
+      content: "0" counter(number);
+      counter-increment: number 1;
+    }
+  }
+}
+
+.flowWrapper.-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .flowContents {
+    flex: 1;
+    padding: 1.5em 1%;
+    margin: 0;
+
+    &:not(:last-child) {
+      margin-right: 4%;
+
+      &:after {
+        top: 0;
+        right: -19%;
+        bottom: 0;
+        left: auto;
+        margin: auto;
+        border-color: transparent transparent transparent $color01;
+        border-width: 50.5px 0 50.5px 25px;
+      }
+    }
+  }
+}
+
+@if $spMode == false {
+  @media screen and (max-width: ($viewTablet - 1)+px) {
+    .flowWrapper.-horizontal {
+      display: block;
+
+      .flowContents {
+        display: block;
+        width: 100%;
+        margin: 10px auto;
+
+        &:not(:last-child) {
+          margin-right: auto;
+          margin-bottom: 50px;
+
+          &:after {
+            position: absolute;
+            top: auto;
+            right: 0;
+            bottom: -65px;
+            left: 0;
+            display: block;
+            content: "";
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+}

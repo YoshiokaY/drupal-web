@@ -1,0 +1,95 @@
+@use "../abstracts" as *;
+@use "../components/extend" as *;
+@use "../components/general/_svg" as *;
+@use "sass:math";
+
+#taoyaFeatures {
+  @include mq(sp, 750) {
+    padding-top: spSize(40);
+  }
+
+  .contentInner {
+    @include mq(sp, 750) {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  .taoyaFeatures {
+    &__pic {
+      @include mq(sp, 750) {
+        padding-right: 5%;
+        padding-left: 5%;
+      }
+    }
+
+    &__wrap {
+      align-items: center;
+      max-width: 900px;
+      margin-top: 120px;
+      margin-right: auto;
+      margin-left: auto;
+
+      @include mq(sp, 750) {
+        gap: spSIze(30) 0;
+        margin-top: spSize(80);
+      }
+
+      + .taoyaFeatures__wrap {
+        margin-top: 180px;
+
+        @include mq(sp, 750) {
+          margin-top: spSize(80);
+        }
+      }
+
+      &:nth-of-type(even) {
+        flex-direction: row-reverse;
+      }
+
+      &:last-child {
+        padding-bottom: 156px;
+
+        @include mq(sp, 750) {
+          padding-bottom: spSize(80);
+        }
+      }
+
+      .columnBlock {
+        &:nth-of-type(2) {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .c_ttl_h3 {
+        @include fontsize(36, 24);
+        margin-top: 0;
+        margin-bottom: 50px;
+
+        @include mq(sp, 750) {
+          margin-bottom: spSize(30);
+        }
+      }
+
+      p {
+        @include fontsize(14, 12);
+        max-width: 360px;
+        margin-right: auto;
+        margin-bottom: 40px;
+        margin-left: auto;
+
+        @include mq(sp, 750) {
+          max-width: none;
+          padding-right: 5%;
+          padding-left: 5%;
+          margin-bottom: spSize(40);
+        }
+      }
+
+      .c_btn {
+        margin-top: auto;
+      }
+    }
+  }
+}

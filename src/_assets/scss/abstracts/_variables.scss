@@ -1,0 +1,134 @@
+// Fonts
+$fontMincho: "游教科書体", YuKyokasho, "游明朝体", YuMincho, "游明朝",
+  "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3,
+  "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro",
+  "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", Georgia, Times,
+  "Times New Roman", serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+
+$fontGothic: "游ゴシック体", YuGothic, "Yu Gothic M", "游ゴシック Medium",
+  "Yu Gothic Medium", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", Osaka,
+  -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Helvetica,
+  "ＭＳ Ｐゴシック", "MS PGothic", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+// ▼ 游ゴシック体 を使用するとき ▼
+// @font-face {
+//   font-family: "Yu Gothic";
+//   font-weight: 100;
+//   src: local("Yu Gothic Medium");
+// }
+// @font-face {
+//   font-family: "Yu Gothic";
+//   font-weight: 200;
+//   src: local("Yu Gothic Medium");
+// }
+// @font-face {
+//   font-family: "Yu Gothic";
+//   font-weight: 300;
+//   src: local("Yu Gothic Medium");
+// }
+// @font-face {
+//   font-family: "Yu Gothic";
+//   font-weight: 400;
+//   src: local("Yu Gothic Medium");
+// }
+// @font-face {
+//   font-family: "Yu Gothic";
+//   font-weight: bold;
+//   src: local("Yu Gothic Bold");
+// }
+
+$fontMarugo: "ヒラギノ丸ゴ Pro W4", "Hiragino maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO",
+  "Verdana", "Osaka", "Helvetica Neue", HelveticaNeue, Helvetica, Arial,
+  "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+
+$fontMeiryo: "メイリオ", "Meiryo", "Helvetica Neue", HelveticaNeue, Helvetica,
+  Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+
+$NotoSan: "Noto Sans JP", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+
+$materialIcon: "Material Icons";
+$fontKiwi: "Kiwi Maru", serif;
+$fontYuji: "Yuji Syuku", serif;
+
+$spMode: false;
+
+$mailForm: false;
+$animation: false;
+
+//ビューポート設定
+$containerSize: 1120; //コンテンツ最大幅
+$containerInner: 930; //コンテンツ最大幅
+$headerSize: 100%; //ヘッダーコンテンツ最大幅
+$header_breakPoint: 750; //ヘッダーブレイクポイント
+$viewPC: $containerSize; //ビューポートPC
+$viewTablet: 750; //ビューポートTablet
+$viewSP: 375; //ビューポートSP
+
+//画像設定
+$logo_width: 350; //ロゴ幅
+$copyWidth: 452; //キャッチコピー幅
+$copyHeight: 335; //キャッチコピー高さ
+$colorLogo: #313a40;
+
+$colorText: #2e2e2e;
+$colorTextReversal: #fff;
+$colorGrayScale: #d8d8d8;
+$colorDark: #535353;
+$colorLight: #fcfbf9;
+$colorRed: #ea5643;
+$color01: var(--color01);
+$color02: var(--color02);
+$color03: var(--color03);
+$color04: var(--color04);
+$color05: var(--color05);
+
+$colorNav: $colorText;
+$colorNav_hover: $colorTextReversal;
+
+//お知らせタグ
+$newsColors: (
+  01: #383c68,
+  02: #d0111b,
+  03: #ff9900,
+  04: #3d7946,
+  05: #d1117b,
+  06: #1f6099,
+  07: #2f95ed,
+  08: #6f783c,
+  09: #59b367,
+);
+
+//背景//
+$bgBody: #fff; //body
+$bgHighlight: #2a2d3f;
+$bgHighlight02: #414252;
+$bgHeader: $bgBody; //ヘッダー
+$bgFooter: $bgHighlight; //フッター
+$bgFooterContent: $bgHighlight02; //フッター
+$bgCopy: $colorText; //コピーライト
+
+//ボタン//
+$colorBtn: $color03; //背景色
+$colorBtnText: $colorTextReversal; //文字色
+$colorBtnBorder: $colorBtn;
+$colorBtn_hover: $colorBtnText; //ホバー時背景
+$colorBtnText_hover: $colorBtn; //ホバー時文字色
+$colorBtnBorder_hover: $colorBtnBorder; //ホバー時枠色
+
+$colorTop: $color01; //トップへ戻る背景
+$colorTopArrow: $colorTextReversal; //トップへ戻る文字色
+
+//フォント設定//
+$baseFont: $NotoSan;
+$baseFontSize: 16, 14;
+$smallFont: 14, 12;
+$h1: 36, 24;
+$h2: 36, 24;
+$h3: 24, 20;
+$h4: 16, 14;
+$h5: 16, 36;

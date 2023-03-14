@@ -1,0 +1,19 @@
+<!-- インクルード：タブコンテンツ-車でお越しの方 -->
+-
+  let car = content.car ? content.car : [];
+.tabContent_img
+  .contentInner
+    each cars in car
+      p !{cars.no}
+      picture
+        source(media='(max-width: 750px)' srcset=imgPath + cars.img + '_sp.jpg' width='335' height='521')
+        img(src=imgPath + cars.img + '.jpg' alt='altが入ります' width='710' height='1104' decoding='async' loading="lazy")
+.tabContent_parking#parking
+  .contentInner
+    each cars in car
+      h2.c_ttl_h2 駐車場のご案内
+      p !{cars.parkingTxt}
+      figure
+        img(src=imgPath + cars.parkingImg + '.jpg', alt="駐車場の地図" width="418" height="226" loading="lazy" decoding="async")
+
+<!-- /インクルード：タブコンテンツ-車でお越しの方 -->

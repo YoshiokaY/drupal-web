@@ -1,0 +1,57 @@
+@use "../abstracts" as *;
+
+%textHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+%borderBox {
+  padding: 0 5%;
+  margin: 2em auto;
+  background: $bgBody;
+  border: 1px solid $color02;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(#000, 0.16);
+}
+
+%numberTitle {
+  z-index: 1;
+  padding-left: 50px;
+  margin: 0 auto 0.5em !important;
+  strong {
+    color: $color01;
+  }
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    padding: 0;
+    margin: 0;
+    font-family: "Cardo", serif;
+    font-size: 280%;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 1;
+    color: rgba($color02, 0.15);
+    text-align: center;
+    content: "" counter(number);
+    counter-increment: number 1;
+    transform: translateY(-30%);
+  }
+}
+
+%cat {
+  padding: 0.2em 0.5em;
+  font-size: 1.4rem;
+  color: $colorTextReversal;
+  text-align: center;
+}

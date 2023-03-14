@@ -1,0 +1,430 @@
+@use "../abstracts" as *;
+@use "../components/extend" as *;
+@use "../components/general/_svg" as *;
+@use "sass:math";
+
+#taoyaContent {
+  .onsenSlide {
+    padding: 80px 0;
+    // @extend %bgsvg;
+    background-repeat: no-repeat;
+    background-position: right bottom 20%;
+
+    @include mq() {
+      padding: spSize(60) 0;
+      background-position: right -18% bottom 45%;
+      background-size: 35%;
+    }
+
+    .contentInner {
+      @include mq() {
+        padding: 0;
+      }
+    }
+
+    @include mq() {
+      .onsenTtl2,
+      .onsenSlideThumb {
+        padding: 0 5%;
+      }
+
+      .columnRow > .columnBlock:last-child,
+      .onsenSlideMain .slick-dots {
+        padding: 0 spSize(20);
+      }
+    }
+
+    .c_ttl_h2 {
+      margin-bottom: 40px;
+      @include mq() {
+        margin-bottom: spSize(32);
+      }
+      + P {
+        // text-align: center;
+        max-width: 59rem;
+        margin: 56px auto 32px;
+        letter-spacing: 0.02em;
+        @include fontsize(12);
+        @include mq() {
+          padding: 0 5%;
+          margin: spSize(56) auto spSIze(40);
+          text-align: left;
+        }
+      }
+    }
+
+    .onsenTtl3 {
+      margin-bottom: 24px;
+      text-align: left;
+      @include fontsize(nth($h3, 1), nth($h3, 2));
+      letter-spacing: 0.08em;
+
+      @include mq() {
+        margin-bottom: spSize(15);
+      }
+    }
+
+    .columnRow {
+      gap: 0 56px;
+      align-items: flex-start;
+
+      @include mq() {
+        display: block;
+      }
+
+      .columnBlock {
+        &:first-child {
+          width: 68%;
+          opacity: 0;
+          transform: translateX(-50px);
+
+          @include mq() {
+            width: 100%;
+            margin-bottom: spSize(35);
+          }
+        }
+
+        &:last-child {
+          width: calc(100% - 56px - 68%);
+
+          > * {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+
+          @include mq() {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .onsenTag {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 32px;
+
+      @include mq() {
+        margin-bottom: spSize(24);
+      }
+
+      > li {
+        padding: 0.3em 0.6em;
+        line-height: 1;
+        background-color: $colorGrayScale;
+        @include fontsize(14, 12);
+      }
+    }
+
+    p {
+      line-height: 2.1;
+    }
+
+    .onsenSlideMain {
+      img {
+        width: 100%;
+        // max-width: 740px;
+        max-height: 416px;
+        aspect-ratio: 740 / 416;
+        object-fit: cover;
+      }
+
+      margin-bottom: 57px;
+
+      @include mq() {
+        margin-bottom: spSize(25);
+      }
+    }
+
+    .slick-slide.slick-current {
+      .columnRow .columnBlock {
+        &:first-child {
+          opacity: 1;
+          transition: 0.8s;
+          transform: none;
+        }
+
+        &:last-child {
+          @for $i from 1 through 3 {
+            > *:nth-child(#{$i}) {
+              opacity: 1;
+              transition: 0.8s;
+              transition-delay: #{$i * 100}ms;
+              transform: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .slideWrapper {
+    .onsenSlide:nth-of-type(even) {
+      background-position: left bottom 20%;
+      .onsenSlideMain {
+        .columnRow {
+          flex-direction: row-reverse;
+        }
+        .lineDots {
+          right: 0;
+          left: auto;
+        }
+      }
+      .onsenSlideThumb {
+        .slick-track {
+          justify-content: flex-end;
+          @include mq() {
+            justify-content: flex-start;
+          }
+        }
+      }
+    }
+    .onsenSlide:not(:first-of-type) {
+      padding-top: 0;
+    }
+  }
+  .expafter {
+    padding-bottom: 100px;
+
+    @include mq() {
+      padding-bottom: spSize(60);
+    }
+
+    .onsenTxt {
+      position: relative;
+      z-index: 1;
+      padding: 120px 0;
+      @include mq() {
+        padding: spSize(80) 0;
+      }
+      &:first-child {
+        background-color: $colorLight;
+      }
+      .contentInner {
+        max-width: 93rem;
+      }
+      .columnRow > .columnBlock {
+        &:last-child {
+          max-width: 36.5rem;
+          @include mq() {
+            // max-width: 46.5rem;
+            max-width: inherit;
+            margin: auto;
+          }
+        }
+      }
+      img {
+        width: 100%;
+        // max-width: 465px;
+        // max-height: 311px;
+        aspect-ratio: 465 / 311;
+        object-fit: cover;
+      }
+      .c_ttl_h2 {
+        margin-bottom: 8rem;
+        @include mq() {
+          margin-bottom: spSize(56);
+        }
+      }
+      p {
+        line-height: 2.1;
+      }
+      .c_btn {
+        margin-top: 3.6rem;
+        @include mq() {
+          margin-top: spSize(40);
+        }
+      }
+    }
+  }
+  .charteringContent {
+    padding: 72px 80px;
+    margin-top: 60px;
+    background-color: $colorLight;
+    @include mq() {
+      width: 90%;
+      padding: spSize(32) spSize(20);
+      margin-top: spSize(40);
+      margin-right: auto;
+      margin-left: auto;
+    }
+    .onsenDl {
+      dd {
+        line-height: 2.1;
+        @include fontsize(14);
+        .cautionTxt {
+          line-height: 1;
+          color: $colorText;
+        }
+      }
+    }
+  }
+  #specialAmenity {
+    padding: 11rem 0;
+    background-color: $color04;
+    .contentInner {
+      max-width: 93rem;
+    }
+    .columnRow > .columnBlock {
+      &:last-child {
+        max-width: 36.5rem;
+        @include mq() {
+          // max-width: 46.5rem;
+          max-width: inherit;
+          margin: auto;
+        }
+      }
+    }
+    .c_ttl_h2 {
+      margin-bottom: 8rem;
+      line-height: 1.5;
+      @include mq() {
+        margin-bottom: spSize(48);
+      }
+    }
+    .c_ttl_h3 {
+      margin-bottom: 4rem;
+      font-weight: normal;
+      line-height: 1.6;
+      text-align: left;
+      letter-spacing: 0.08em;
+      @include mq() {
+        margin-bottom: spSize(20);
+      }
+    }
+    p {
+      line-height: 2.2;
+      letter-spacing: 0.02em;
+    }
+    img {
+      width: 100%;
+      // max-width: 465px;
+      // max-height: 311px;
+      aspect-ratio: 465 / 311;
+      object-fit: cover;
+    }
+  }
+  #onsenAmenity {
+    padding: 13rem 0 12rem;
+    .contentInner {
+      max-width: 93rem;
+    }
+    @include mq() {
+      padding: spSize(80) 0;
+    }
+    .c_ttl_h2 {
+      margin-bottom: 5rem;
+      @include mq() {
+        margin-bottom: spSize(70);
+      }
+    }
+    .c_ttl_h3 {
+      margin-bottom: 2.4rem;
+      font-weight: normal;
+      text-align: left;
+      @include mq() {
+        margin-bottom: spSize(24);
+      }
+    }
+    .c_ttl_h4 {
+      margin-bottom: 2.4rem;
+      @include mq() {
+        margin-bottom: spSize(16);
+      }
+    }
+    figcaption {
+      text-align: left;
+      @include fontsize(16, 14);
+      letter-spacing: 0.1em;
+    }
+    .c_list {
+      &:not(:last-child) {
+        margin-bottom: 4rem;
+        @include mq() {
+          margin-bottom: spSize(24);
+        }
+      }
+      > li {
+        @include fontsize(14);
+        // margin-bottom: 1em;
+      }
+    }
+  }
+  .bgLightContainer {
+    padding: 8rem 8rem 6.4rem;
+    background-color: $colorLight;
+    @include mq() {
+      padding: spSize(32) spSize(24);
+    }
+    &:not(:last-child) {
+      margin-bottom: 32px;
+      @include mq() {
+        margin-bottom: spSize(24);
+      }
+    }
+  }
+  #onsenBnr {
+    padding: 8rem 0;
+    background-color: $colorLight;
+    @include mq() {
+      padding: spSize(80) 0;
+    }
+    .c_ttl_h2 {
+      margin-bottom: 8rem;
+      @include mq() {
+        margin-bottom: spSize(56);
+      }
+    }
+    p {
+      margin-bottom: 8rem;
+      text-align: center;
+      @include fontsize(14);
+      @include mq() {
+        margin-bottom: spSize(40);
+        text-align: left;
+      }
+    }
+    .columnRow {
+      justify-content: center;
+      > .columnBlock {
+        max-width: 36rem;
+        @include mq() {
+          max-width: inherit;
+        }
+      }
+    }
+  }
+  #onsenAbout {
+    padding: 12rem 0;
+    background-color: $colorLight;
+    @include mq() {
+      padding: spSize(80) 0;
+    }
+    .c_ttl_h2 {
+      margin-bottom: 8rem;
+      @include mq() {
+        margin-bottom: spSize(56);
+      }
+    }
+    dd {
+      line-height: 2.1;
+      color: $colorDark;
+      a {
+        text-decoration: underline;
+      }
+    }
+    .c_list {
+      > li {
+        margin-bottom: 1em;
+      }
+    }
+  }
+  #taoyaPickup {
+    .c_ttl_h2 {
+      margin-bottom: 8rem;
+      @include mq() {
+        margin-bottom: spSize(64);
+      }
+    }
+  }
+}

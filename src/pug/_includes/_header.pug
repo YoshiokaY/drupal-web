@@ -1,0 +1,14 @@
+header#global_header
+  div.headContainer
+    if slag === "top"
+      h1.header_logo
+    else
+      div.header_logo
+        a(href="/")
+          if key === "shima"
+            include ../../html/_svg/_shima_logo.html
+          if key === "nikko"
+            include ../../html/_svg/_nikko_logo.html
+    include _nav
+  //- include ../../html/_includes/_headform.html
+

@@ -1,0 +1,13 @@
+<!--インクルード：バナー -->
+-
+  let banner = content.banner ? content.banner : [];
+
+section#onsenBnr
+  .contentInner
+    h2.c_ttl_h2.scrollIn.up.each その他の!{page.name}での過ごし方
+    .columnRow.scrollIn.up.each
+      each val in banner
+        .columnBlock
+          a(href=val.link class="c_btn") !{val.txt}
+    a(href="/spend/" class="c_btn -reverse -invert") 過ごし方TOPに戻る
+<!--/インクルード：バナー -->

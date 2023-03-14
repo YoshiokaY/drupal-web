@@ -1,0 +1,13 @@
+<!--ブロックコンテンツ ： スペシャルアメニティがある場合表示 -->
+
+section#specialAmenity
+  .contentInner
+    h2.c_ttl_h2.scrollIn.up.each 当施設限定！<br>スペシャルアメニティ
+    .columnRow
+      .columnBlock.scrollIn.left.each
+        figure
+          img(src=imgPath + 'onsen/onsen_special.jpg' alt='シャンプーバー' width='465' height='311' decoding='async' loading='lazy')
+      .columnBlock.scrollIn.right.each
+        h3.c_ttl_h3 !{content.spAme_ttl}
+        p !{content.spAme_txt}
+<!--/ブロックコンテンツ ： スペシャルアメニティがある場合表示 -->

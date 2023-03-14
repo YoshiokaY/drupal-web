@@ -1,0 +1,18 @@
+.slideContainer.scrollIn.right.each
+  script.
+    const hostname = 'zen-api.reservation.jp';
+    const endpoint = '/external-site-v1/plan/search'
+    const api = 'https://' + hostname + endpoint;
+    const facilityId = '!{page.apiId}';//施設固有のIDを記述
+    const externalSiteAuthKey = '!{page.apiKey}';//施設固有のkeyを記述
+
+  .plan_boxes
+    .plan_box.noresult(target='_blank')
+      p.error_text
+        | 処理中にエラーが発生しました。
+        br
+        | 時間をおいてから再度アクセスしてください。
+  p.slick-num
+    span.nowcnt
+    |  ／
+    span.allcnt

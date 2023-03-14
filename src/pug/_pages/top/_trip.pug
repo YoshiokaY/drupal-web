@@ -1,0 +1,16 @@
+<!--インクルード：周辺環境コンテンツ -->
+
+section#taoyaTrip
+  .c_trip
+    picture.c_trip_img
+      source(media='(max-width: 750px)' srcset=imgPath + 'trip_img001_sp.jpg' width='375' height='377')
+      img(src=imgPath + 'trip_img001.jpg' alt='周辺観光' width='1280' height='434' decoding='async' loading="lazy")
+
+    .c_trip_txt
+      h2.c_ttl_h2.-section.scrollIn.up.each 周辺観光
+        span.c_ttl_h2-en SIGHTSEEING
+      p.scrollIn.up.each !{top.tripTxt}
+
+      a(href="/sightseeing/" class="c_link-txt -white scrollIn up each") 詳細へ
+
+<!--/インクルード：周辺環境コンテンツ -->

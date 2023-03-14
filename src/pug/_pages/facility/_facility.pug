@@ -1,0 +1,52 @@
+<!--ブロック：館内施設 -->
+-
+  let list = content.list ? content.list : [];
+#taoyaFacility
+  #taoyaAnchors
+    ul.contentInner
+      <!--ブロック：アンカーリスト -->
+      each val, index in list
+        li
+          a(href='#facility' +'0'+ [index+1])
+            span #{val.ttl}
+      <!--/ブロック：アンカーリスト -->
+      <!--例外：直に下記アンカーリンク追加 -->
+      if key == "nikko"
+        li
+          a(href='#price01')
+            span 無料
+        li
+          a(href='#price02')
+            span 別料金
+      li
+        a(href='#facilityTime')
+          span 館内のご利用時間
+      <!--/例外：直に下記アンカーリンク追加 -->
+
+  <!--ブロック：館内施設-カテゴリ：繰り返しコンテンツ -->
+  each val,index in list
+    section(class="facilityContent" id="facility0"+ [index+1])
+      .contentInner.-small
+        <!--ブロック：館内施設-カテゴリ名 -->
+        h2.c_ttl_h2.scrollIn.up.each #{val.ttl}
+        <!--/ブロック：館内施設-カテゴリ名 -->
+        .columnRow.-blocks2
+          <!--ブロック：館内施設-ブロック：繰り返しコンテンツ -->
+          each block in val.block
+            .columnBlock.facilityBlock.scrollIn.up.each
+              <!--ブロック：館内施設-ブロック-画像 -->
+              figure: img(src=imgPath + block.img, alt=block.ttl width="447" height="248" loading="lazy" decoding="async")
+              <!--/ブロック：館内施設-ブロック-画像 -->
+              <!--ブロック：館内施設-ブロック-タイトル -->
+              h3.c_ttl_h3 !{block.ttl}
+              <!--/ブロック：館内施設-ブロック-タイトル -->
+              <!--ブロック：館内施設-ブロック-サマリー -->
+              p.facilityBlock_txt !{block.txt}
+              <!--/ブロック：館内施設-ブロック-サマリー -->
+              <!--ブロック：館内施設-ブロック-リンク先がある場合表示 -->
+              if block.link !== ''
+                a.c_btn.-invert(href=block.link) !{block.linkTxt}
+              <!--/ブロック：館内施設-ブロック-リンク先がある場合表示 -->
+        <!--/ブロック：館内施設-ブロック：繰り返しコンテンツ -->
+  <!--/ブロック：館内施設-カテゴリ：繰り返しコンテンツ -->
+<!--/ブロック：館内施設 -->

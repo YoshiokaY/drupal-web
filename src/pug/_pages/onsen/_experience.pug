@@ -1,0 +1,25 @@
+<!-- インクルード:温泉体験・過ごし方 -->
+.expafter
+  section#onsenExp.onsenTxt
+    .contentInner
+      h2.c_ttl_h2.scrollIn.up 温泉を体験
+      .columnRow
+        .columnBlock.scrollIn.left.each
+          figure
+            img(src=imgPath + '/onsen/exp_img001.jpg' alt='altが入ります' width='465' height='311' loading='lazy' decoding='async')
+        .columnBlock.scrollIn.right.each
+          p !{content.experience}
+          if content.link !== ''
+            a.c_btn(href=page.link) 詳しくはこちら
+  section#onsenStay.onsenTxt
+    .contentInner
+      h2.c_ttl_h2.scrollIn.up 入浴後の過ごし方
+      .columnRow
+        .columnBlock.scrollIn.left.each
+          figure
+            img(src=imgPath + '/onsen/exp_img002.jpg' alt='altが入ります' width='465' height='311' loading='lazy' decoding='async')
+        .columnBlock.scrollIn.right.each
+          p !{content.stay}
+          if content.link2 !== ''
+            a.c_btn(href=page.link2) 詳しくはこちら
+<!-- /インクルード:温泉体験・過ごし方 -->

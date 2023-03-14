@@ -1,0 +1,12 @@
+<!-- インクルード：タブコンテンツ -->
+section#taoyatTab
+  .tab-inner
+    .contentInner
+      ul.tabButton.anchorList(role='tablist')
+        li(role='tab' id="tab1" class="tabButton__item is-active" aria-selected="true" aria-controls="tabpanel1" tabindex="0") お車をご利用の方
+        li(role='tab' id="tab2" class="tabButton__item" aria-selected="false" aria-controls="tabpanel2" tabindex="-1") 電車をご利用の方
+    .tabContent(role='tabpanel' id="tabpanel1" tabindex="0" aria-labelledby="tab1" aria-expanded="true")
+      include ./_car
+    .tabContent(role='tabpanel' id="tabpanel2" tabindex="-1" aria-labelledby="tab2" aria-expanded="false" hidden)
+      include ./_train
+<!-- /インクルード：タブコンテンツ -->

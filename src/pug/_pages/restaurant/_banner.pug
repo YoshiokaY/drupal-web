@@ -1,0 +1,12 @@
+<!--インクルード：バナーコンテンツ -->
+
+-
+  let banner = content.banner ? content.banner : [];
+
+section#restaurantBanner
+  ul.contentInner
+    each val in banner
+      li.scrollIn.up.each
+        a(href=val.link)
+          +Picture(val.img)
+<!--インクルード：バナーコンテンツ -->

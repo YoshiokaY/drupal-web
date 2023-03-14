@@ -1,0 +1,66 @@
+nav
+  ul.menu
+    li.menu_item
+      a(href="/onsen/") 温泉
+    li.menu_item
+      a(href="/restaurant/") 食事
+    li.menu_item
+      a(href="/rooms/") 部屋
+    li.menu_item
+      a(href="/plan/") 宿泊・料金
+    li.menu_item
+      a(href="/facility/") 施設・概要
+    li.menu_item
+      a(href="/features/") ホテルの魅力
+    li.menu_item
+      a(href="/sightseeing/") 周辺観光
+    li.menu_item
+      a(href="/access/") アクセス
+  .menu_sp
+    .menu_header
+      .header_logo
+        a(href="/")
+          if key === "shima"
+            include ../../html/_svg/_shima_logo.html
+          if key === "nikko"
+            include ../../html/_svg/_nikko_logo.html
+      p.close_btn: img(src="/v2_facility_common/img/menu_close_btn.png" alt="閉じるボタン")
+
+    .menu_item
+      a(href="/onsen/") 温泉
+    .menu_item
+      a(href="/restaurant/") 食事
+    .menu_item
+      a(href="/rooms/") 部屋
+    .menu_item
+      a(href="/plan/") 宿泊・料金
+    .menu_item
+      a(href="/facility/") 施設・概要
+    .menu_item
+      a(href="/features/") ホテルの魅力
+    .menu_item
+      a(href="/sightseeing/") 周辺観光
+    .menu_item.faq_link
+      a(href="/faq/" target="_blank") よくあるお問い合わせ
+    .menu_item
+      a(href="/access/") アクセス
+    .menu_item
+      a(href="/news/") お知らせ
+
+    .menu_item._sub-item
+      a.blank(href="https://members.ooedoonsen.jp/member/login" target="_blank") いいふろ会員マイページ
+    .menu_item._sub-item
+      a.blank(href="https://go-ooedoonsen.reservation.jp/ja/reservations/detail_entry" target="_blank" rel="noopener") 予約確認・変更・キャンセル
+    .menu_item._sub-item
+      a.blank(href="https://www.ooedoonsen.jp/pamphlet/html5.html#page=1" target="_blank") デジタルパンフレット
+    .menu_item._sub-item
+      a.blank(href="https://www.ooedoonsen.jp/" target="_blank") 大江戸温泉物語グループサイト
+
+    .menu_item-search
+      a(href="#modal1" data-modal="" class="c_btn -search") 空室予約
+
+  a(href="#modal1" data-modal="" class="reservation_btn") 空室予約
+
+  .hamburger_btn
+    p._icon
+      span

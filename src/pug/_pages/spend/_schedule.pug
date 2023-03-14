@@ -1,0 +1,51 @@
+<!--静的：過ごし方下層コンテンツ -->
+-
+  let days = content.days ? content.days : [];
+
+each day,index in days
+  section(class="scheduleContainer" id="day" + [inde + 1])
+    .contentInner.-small
+      h2.c_ttl_h2.-date.scrollIn.up Day !{index + 1}
+      each block,index in day.blocks
+        .c_time
+          h3.c_time_ttl.scrollIn.up.each
+            span !{block.time}
+            | !{block.ttl}
+          //- 画像がある場合
+          figure.c_time_img.scrollIn.up.each
+            //- キャプションがある場合
+            if block.caption !== ''
+              figcaption: span.pinTxt !{block.caption}
+            img(src=imgPath + block.img, alt=block.ttl width="640" height="234" loading="lazy" decoding="async")
+          if block.slides
+            div(class="c_time_slides scrollIn up each slide" + [index])
+                each slide in block.slides
+                  .columnRow
+                    .columnBlock
+                      if slide.cap !== ''
+                        figcaption: span.pinTxt !{slide.cap}
+                      figure.c_time_slides_img: img(src=imgPath + slide.img, alt=slide.ttl width="335" height="187" loading="lazy" decoding="async")
+                    .columnBlock
+                      h3.c_ttl_h3 !{slide.ttl}
+                      p !{slide.txt}
+                      //- リンクボタンがある場合
+                      if slide.link !== ''
+                        a(href=slide.link class="c_btn") 詳しくはこちら
+          else
+            .c_time_column.scrollIn.up.each
+              .columnRow
+                .columnBlock
+                  if block.columnCap !== ''
+                    p.-textRight: span.pinTxt !{block.columnCap}
+                  ul.c_time_column_imgList
+                    each img in block.columnImg
+                      li.c_time_column_imgList-item: figure: img(src=imgPath + img, alt=block.columnTtl width="222" height="149" loading="lazy" decoding="async")
+                .columnBlock
+                  if block.columnTtl !== ''
+                    h3.c_ttl_h3 !{block.columnTtl}
+                  p !{block.columnTxt}
+                  //- リンクボタンがある場合
+                  if block.columnLink !== ''
+                    a(href=block.columnLink class="c_btn") 詳しくはこちら
+
+<!--/静的：過ごし方一覧コンテンツ -->

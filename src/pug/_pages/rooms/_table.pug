@@ -1,0 +1,13 @@
+<!--ブロック：部屋詳細データ -->
+-
+  let dl = content.dl ? content.dl : [];
+
+section.roomDetail
+  .contentInner
+    h2.c_ttl_h2.-textLeft.scrollIn.up.each !{content.ttl}
+    p.scrollIn.up.each !{content.txt}
+    +setDl(dl)
+    <!-- 現行サイトと同様、施設/部屋IDをリンクに入れる -->
+    a(href="https://go-ooedoonsen.reservation.jp/ja/hotels/" class="c_btn scrollIn up each" target="_blank" rel="noopener noreferrer") この部屋の宿泊プランを見る
+
+<!--/ブロック：部屋詳細データ -->

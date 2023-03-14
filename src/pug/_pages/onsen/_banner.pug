@@ -1,0 +1,16 @@
+<!--インクルード：バナー -->
+section#onsenBnr
+  .contentInner
+    h2.c_ttl_h2.scrollIn.up.each !{content.bannerTtl}
+    p.scrollIn.up.each !{content.bannerTxt}
+    .columnRow.scrollIn.up.each
+      if content.banner1 !== ''
+        .columnBlock
+          a.c_btn(href=page.banner1) 日帰り入浴について<br>詳しくはこちら
+      if content.banner2 !== ''
+        .columnBlock
+          a.c_btn(href=page.banner2) 日帰りバイキングについて<br>詳しくはこちら
+      if content.banner3 !== ''
+        .columnBlock
+          a.c_btn(href=page.banner3) 湯めぐりのご案内について<br>詳しくはこちら
+<!--/インクルード：バナー -->

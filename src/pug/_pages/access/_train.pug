@@ -1,0 +1,41 @@
+<!-- インクルード：タブコンテンツ-電車でお越しの方 -->
+-
+  let train = content.train ? content.train : [];
+.tabContent_img
+  .contentInner
+    each trains in train
+      picture
+        source(media='(max-width: 750px)' srcset=imgPath + trains.img + '_sp.jpg' width='335' height='770')
+        img(src=imgPath + trains.img + '.jpg' alt='altが入ります' width='710' height='782' decoding='async' loading="lazy")
+.tabContent_bus#shuttle-bus
+  .contentInner
+    each trains in train
+      h2.c_ttl_h2 無料送迎バスのご案内
+      if key == 'shima'
+        include ../../../html/_includes/_bus_shima.html
+      if key == 'nikko'
+        include ../../../html/_includes/_bus_nikko.html
+      h3.c_ttl_h2 【無料送迎バスご利用のお客様へご案内】
+      ul
+        li ＊バス停で無料送迎バスをお待ちの際には、お客様同士の間隔を最低1m空けてお待ちください。
+        li ＊バスご乗車の際は、新型コロナウィルス感染防止の為、必ずマスクの着用と手指消毒をお願いいたします。
+        li ＊バスご乗車の際は、体温を計測させていただき、37.5℃以上の方はご乗車をお断りさせていただく場合がございます。
+        li ＊バス車内の換気を行う為、一部窓を開けて運行しております。
+        li ＊バス運行中は会話は極力お控えください。
+        li ＊バスの座席や手摺は、消毒液にて拭き取り清掃を実施しております。
+        li ＊座席と座席の間隔をあけてご乗車いただくため、座席が空いていてもご乗車をご遠慮いただく場合がございますので、予めご了承ください。
+      .access_tel_box
+        .access_tel_first 電話予約お問い合わせ
+        .access_tel_icon_box
+        .access_tel_img_box
+          img(src='/v2_facility_common/img/dial_icon.png' alt='ナビダイヤル')
+          a.access_tel_link(href='tel:' + trains.telLink) #{trains.tel}
+        .access_tel_time ご予約受付時間　9:00～19:00/ナビダイヤル（有料）
+.tabContent_public
+  .contentInner
+    each trains in train
+      h2.c_ttl_h2 路線バスご利用の場合
+      p !{trains.txt}
+      a.c_btn(href=trains.link target="_blank" rel="noopener noreferrer") 詳しくはこちら
+
+<!-- /インクルード：タブコンテンツ-電車でお越しの方 -->

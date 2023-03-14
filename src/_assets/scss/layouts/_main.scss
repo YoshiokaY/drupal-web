@@ -1,0 +1,76 @@
+@use "../abstracts" as *;
+@use "sass:math";
+///-----------------見出し//
+
+$blockMargin: 3.6%;
+$blockWide: 8%;
+$blockSp: 20px;
+
+.columnRow {
+  position: relative;
+  display: flex;
+  gap: 2.6% $blockMargin;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  @include mq() {
+    flex-wrap: wrap;
+    gap: $blockSp;
+  }
+  &.-wide {
+    gap: $blockWide;
+  }
+
+  &.-vertical {
+    align-items: center;
+  }
+  &.-reversal {
+    flex-direction: row-reverse;
+  }
+
+  @for $i from 2 through 8 {
+    &.-blocks#{$i} {
+      flex-wrap: wrap;
+      gap: $blockMargin $blockMargin / ($i - 1);
+      justify-content: flex-start;
+      > .columnBlock {
+        width: calc((100% - #{$blockMargin}) / #{$i});
+      }
+      @include mq() {
+        flex-wrap: wrap;
+        gap: $blockSp;
+        &.-sp_2 {
+          > .columnBlock {
+            width: calc((100% - $blockSp) / 2) !important;
+          }
+        }
+        &.-sp_3 {
+          > .columnBlock {
+            width: calc((100% - $blockSp * 2) / 3) !important;
+          }
+        }
+      }
+    }
+  }
+  > .columnBlock {
+    width: 50%;
+    margin: 0;
+    @include mq() {
+      width: 100% !important;
+    }
+  }
+}
+
+@for $i from 2 through 19 {
+  .columnRow {
+    > .columnBlock.-wd#{$i * 5} {
+      width: #{$i * 5%};
+      @include mq() {
+        width: 100%;
+      }
+    }
+  }
+}
+.columnRow > .columnBlock.-wd100 {
+  width: 100%;
+}

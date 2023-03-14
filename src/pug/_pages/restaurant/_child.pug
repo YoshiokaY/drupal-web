@@ -1,0 +1,23 @@
+<!--インクルード：お子様コンテンツ -->
+//- だしわけ不要
+-
+  let slides =
+  [
+    {
+      img: 'child_img001',
+      caption: 'お子様でも使いやすい食器をご用意いたしております。'
+    },
+        {
+      img: 'child_img002',
+      caption: 'ベビーフードもご用意しております。ご希望の方は、スタッフまでお声がけください。'
+    },
+  ]
+
+section#restaurantChild
+  .contentInner
+    h2.c_ttl_h2.loadIn.up.each お子様の食事について
+
+  each slide in slides
+    - let item = slide
+  +sliderCenterMode(item, slides, index)
+<!--/インクルード：お子様コンテンツ -->

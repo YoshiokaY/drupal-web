@@ -1,0 +1,361 @@
+@use "../abstracts" as *;
+@use "../components/_extend" as *;
+@use "../components/general/_svg" as *;
+@use "sass:math";
+
+#restaurantBlock {
+  .contentInner {
+    max-width: 930px;
+  }
+
+  .foodBlock {
+    padding: 80px 117px;
+    background: #fcfbf9;
+
+    @include mq(sp, 750) {
+      padding: spSize(56) spSize(14);
+    }
+
+    + .foodBlock {
+      margin-top: 64px;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(40);
+      }
+    }
+
+    &__ttl {
+      @include fontsize(24, 20);
+      text-align: center;
+      letter-spacing: 0.15em;
+
+      @include mq(sp, 750) {
+        line-height: 2;
+      }
+
+      span {
+        @include fontsize(16, 14);
+        display: block;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    &__days {
+      @include fontsize(14, 12);
+      margin-top: 10px;
+      margin-bottom: 40px;
+      text-align: center;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(10);
+        margin-bottom: spSize(27);
+      }
+    }
+
+    .foodTextTtl {
+      margin-top: 40px;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(40);
+      }
+
+      strong {
+        @include fontsize(24, 20);
+        font-weight: normal;
+        line-height: 1.8;
+        letter-spacing: 0.15em;
+      }
+    }
+
+    .foodText {
+      margin-top: 30px;
+      margin-bottom: 80px;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(29);
+        margin-bottom: spSize(38);
+      }
+
+      p {
+        @include fontsize(16, 14);
+        line-height: 2;
+        letter-spacing: 0.15em;
+
+        + p {
+          margin-top: 0.9em;
+        }
+      }
+
+      small {
+        display: block;
+        margin-top: 0.8em;
+        line-height: 1.8;
+        text-align: left;
+        @include fontsize(14, 12);
+      }
+    }
+
+    .c_btn {
+      @include mq(sp, 750) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+#restaurantSlide {
+  margin-top: 120px;
+
+  @include mq(sp, 750) {
+    margin-top: spSizs(80);
+  }
+
+  .foodBlock {
+    + .foodBlock {
+      margin-top: 120px;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(82);
+      }
+    }
+  }
+
+  .restaurantSlide {
+    &__txt {
+      position: relative;
+      z-index: 1;
+      padding-top: 80px;
+      margin-bottom: 36px;
+
+      @include mq(sp, 750) {
+        padding-top: spSize(56);
+        margin-bottom: 0;
+      }
+
+      .contentInner {
+        position: relative;
+        z-index: 1;
+        max-width: 930px;
+
+        .c_ttl_h2 {
+          color: #fff;
+
+          &-en {
+            color: #fff;
+          }
+        }
+
+        .slideTxt {
+          @include fontsize(16, 14);
+          padding: 40px 117px;
+          margin-top: 77px;
+          line-height: 2.1;
+          text-align: left;
+          letter-spacing: 0.15em;
+          background: #fff;
+
+          @include mq(sp, 750) {
+            padding: spSize(24) spSize(20);
+            margin-top: spSize(35);
+          }
+
+          strong {
+            @include fontsize(24, 20);
+            display: block;
+            margin-bottom: 20px;
+            font-weight: normal;
+
+            @include mq(sp, 750) {
+              margin-bottom: spSize(20);
+            }
+          }
+
+          small {
+            @include fontsize(14, 12);
+            display: block;
+            margin-top: 10px;
+            letter-spacing: 0.05em;
+
+            @include mq(sp, 750) {
+              margin-top: spSize(10);
+            }
+          }
+        }
+      }
+
+      &-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+
+        img {
+          width: 100%;
+          height: 320px;
+          object-fit: cover;
+
+          @include mq(sp, 750) {
+            height: spSize(188);
+          }
+        }
+      }
+    }
+  }
+
+  .subText {
+    margin-top: 40px;
+
+    @include mq(sp, 750) {
+      margin-top: spSize(40);
+    }
+
+    &__inner {
+      padding: 80px 118px 75px;
+      text-align: left;
+      background: #fcfbf9;
+
+      @include mq(sp, 750) {
+        padding: spSize(32) spSize(20) spSize(30);
+      }
+
+      .c_ttl_h3 {
+        @include fontsize(24, 20);
+        letter-spacing: 0.15em;
+      }
+
+      p {
+        @include fontsize(16, 12);
+        margin-top: 40px;
+        letter-spacing: 0.1em;
+
+        @include mq(sp, 750) {
+          margin-top: spSize(24);
+        }
+
+        small {
+          display: block;
+          margin-top: 10px;
+          @include fontsize(14, 12);
+        }
+      }
+    }
+  }
+}
+
+#restaurantBanner {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  margin-top: 120px;
+  background: #fcfbf9;
+
+  @include mq(sp, 750) {
+    padding-top: spSize(80);
+    padding-bottom: spSize(80);
+    margin-top: spSize(80);
+  }
+
+  li {
+    + li {
+      margin-top: 56px;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(24);
+      }
+    }
+  }
+}
+
+#restaurantProduce {
+  padding-top: 117px;
+  padding-bottom: 133px;
+
+  @include mq(sp, 750) {
+    padding-top: spSize(80);
+    padding-bottom: spSize(80);
+  }
+
+  .c_ttl_h2 {
+    span {
+      @include fontsize(16, 12);
+      display: block;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    small {
+      @include fontsize(24, 20);
+    }
+  }
+
+  .columnRow {
+    gap: 0 100px;
+    max-width: 930px;
+    margin-top: 80px;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include mq(sp, 750) {
+      gap: spSize(32) 0;
+      margin-top: spSize(56);
+    }
+
+    .columnBlock {
+      &:nth-of-type(2) {
+        display: flex;
+        flex-direction: column;
+        max-width: calc(50% - 100px);
+
+        @include mq(sp, 750) {
+          max-width: 100%;
+        }
+      }
+
+      p {
+        margin-bottom: 1em;
+        line-height: 2;
+        letter-spacing: 0.15em;
+
+        @include mq(sp, 750) {
+          margin-bottom: spSize(48);
+        }
+      }
+
+      .c_btn {
+        margin-top: auto;
+      }
+    }
+  }
+}
+
+#restaurantChild {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  background: #fcfbf9;
+
+  @include mq(sp, 750) {
+    padding-top: spSize(80);
+    padding-bottom: spSize(80);
+  }
+
+  .c_ttl_h2 {
+    margin-bottom: 80px;
+
+    @include mq(sp, 750) {
+      margin-bottom: spSize(56);
+    }
+  }
+}
+
+#restaurantCaution {
+  padding-top: 120px;
+  padding-bottom: 120px;
+
+  @include mq(sp, 750) {
+    padding-top: spSize(80);
+    padding-bottom: spSize(80);
+  }
+  dd {
+    color: $colorDark;
+  }
+}

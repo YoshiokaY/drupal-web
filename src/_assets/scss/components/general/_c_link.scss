@@ -1,0 +1,22 @@
+@use "../../abstracts" as *;
+@use "./svg" as *;
+@use "sass:math";
+
+.c_link-txt {
+  @include fontsize(14, 14);
+  display: inline-block;
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right 5px center;
+  background-size: 6px 10px;
+  @extend %bgTextLinkArrowBlack;
+
+  &.-white {
+    color: #fff;
+    @extend %bgTextLinkArrowWhite;
+  }
+  @include hover {
+    background-position: right center;
+    transition: background 0.2s;
+  }
+}

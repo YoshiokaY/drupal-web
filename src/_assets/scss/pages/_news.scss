@@ -1,0 +1,293 @@
+@use "../abstracts" as *;
+@use "../components/extend" as *;
+@use "../components/general/_svg" as *;
+@use "sass:math";
+
+#breadcrumbs {
+  display: block !important;
+}
+
+body.-news {
+  // .news-section {
+  //   .inner {
+  //     max-width: 93rem;
+  //   }
+  // }
+  #breadcrumbs .breadcrumbs_list {
+    @include mq(pc) {
+      max-width: 1150px;
+      padding: 15px 10px;
+    }
+  }
+
+  .v3-newsTag {
+    padding: 4rem 7.5rem;
+    margin-bottom: 6.4rem;
+    background-color: $colorLight;
+    @include mq() {
+      padding: spSize(30) spSize(20);
+      margin-bottom: spSize(64);
+    }
+    .v3-newsTag_ttl {
+      @include fontsize(20, 26);
+      position: relative;
+      padding: 0;
+      margin: 0 auto;
+      font-weight: normal;
+      letter-spacing: 0.08em;
+      pointer-events: none;
+      border: 0;
+      @include mq() {
+        text-align: center;
+        pointer-events: auto;
+        cursor: pointer;
+        &::before,
+        &::after {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1;
+          display: block;
+          width: 1.6rem;
+          height: 1px;
+          margin: auto;
+          content: "";
+          background-color: $colorText;
+        }
+        &::after {
+          transition: transform 0.2s;
+          transform: rotate(90deg);
+        }
+        &.is-active {
+          &::after {
+            transition: transform 0.2s;
+            transform: none;
+          }
+        }
+      }
+    }
+    .v3-newsTag_nav {
+      display: none;
+      margin-top: spSize(24);
+      @include mq(pc) {
+        display: flex !important;
+        margin: 2.4rem auto 0;
+      }
+    }
+    .v3-newsTag_list {
+      display: flex;
+      gap: 1.8rem 2rem;
+      @include mq() {
+        gap: spSize(12);
+      }
+    }
+    .v3-newsTag_item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 14rem;
+      height: 4rem;
+      padding: 0.3em 0.8rem;
+      padding-left: 1.8rem;
+      margin: 0;
+      background-color: $bgBody;
+      @include mq() {
+        width: 47%;
+      }
+    }
+    .v3-newsTag_tag {
+      position: relative;
+      padding: 0;
+      padding-left: 1.8em;
+      color: $color03;
+      letter-spacing: 0.02em;
+      background-color: $bgBody !important;
+      @include fontsize(14);
+      &::before,
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        content: "";
+      }
+      &::before {
+        width: 1.4rem;
+        height: 1.4rem;
+        background-color: $color03;
+        border: 1px solid $colorGrayScale;
+      }
+      &::after {
+        bottom: 0.2rem;
+        left: 0.3rem;
+        width: 0.8rem;
+        height: 0.5rem;
+        border-bottom: 2px solid $colorTextReversal;
+        border-left: 2px solid $colorTextReversal;
+        transform: rotate(-45deg);
+      }
+      &.is-off {
+        color: $colorDark;
+        &::before {
+          background-color: $bgBody;
+        }
+        &::after {
+          content: none;
+        }
+      }
+    }
+    .v3-newsTag_release {
+      @include mq() {
+        max-width: 107px;
+        margin: 3rem auto 0;
+      }
+    }
+  }
+
+  .news_cards {
+    .v3-newsTag_list {
+      .v3-newsTag_item {
+        .v3-newsTag_tag {
+          color: $colorDark;
+          background-color: $bgBody;
+          border: 1px solid $colorDark;
+        }
+      }
+    }
+    .news_card_date {
+      color: $colorDark;
+    }
+  }
+
+  #news-pager {
+    padding-top: 1rem;
+  }
+
+  #news-pager .pager_numbers .pager_number a {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0;
+    &.now {
+      background-color: $colorText;
+    }
+  }
+  #news-pager .pager_next {
+    @extend %bgTextLinkArrowBlack;
+    width: 0.6rem;
+    background-position: center;
+    background-size: 100%;
+  }
+  #news-pager .pager_prev {
+    @extend %bgTextLinkArrowBlack;
+    width: 0.6rem;
+    background-position: center;
+    background-size: 100%;
+    transform: rotate(180deg);
+  }
+
+  #news-pager .pager_numbers {
+    align-items: center;
+  }
+
+  #facility-news .news_card::before,
+  #news-list .news_card::before {
+    border-color: $color03;
+  }
+
+  #news-detail {
+    .news-box {
+      .v3-newsHead {
+        flex-direction: column-reverse;
+        align-items: flex-start !important;
+        justify-content: flex-start;
+        .date {
+          margin-bottom: 0.5em;
+          margin-left: 0 !important;
+          @include fontsize(16);
+          color: $colorDark;
+        }
+        .v3-newsTag_list {
+          .v3-newsTag_item {
+            .v3-newsTag_tag {
+              padding: 0.5em 0.6em;
+              margin-bottom: 1.5em;
+              color: $colorDark;
+              letter-spacing: 0.02em;
+              background-color: $bgBody;
+              border: 1px solid $colorDark;
+              @include fontsize(10);
+            }
+          }
+        }
+      }
+
+      .news-title {
+        @include fontsize(24, 24);
+        font-weight: normal;
+      }
+    }
+  }
+
+  .back_btn_wrapper {
+    .back_btn {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 36rem;
+      height: 6.4rem;
+      padding: 1em 1.5em;
+      padding-left: 2rem;
+      margin: 0 auto;
+      margin-top: 50px;
+      overflow: hidden;
+      font-weight: normal;
+      line-height: 1.5;
+      color: $colorBtnText_hover !important;
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      background-color: $colorBtn_hover;
+      border: 1px solid $colorBtnBorder;
+      border-radius: 0;
+      transition: 0.4s;
+      transition: color 0.4s, background 0.4s;
+      @include fontsize(16);
+      @include mq {
+        width: spSize(335);
+        max-width: 100%;
+        height: spSize(64);
+      }
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 5%;
+        width: 2rem;
+        height: 2rem;
+        margin: auto;
+        content: "";
+        background-image: var(--iconArrow);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        transition: right 0.4s;
+        transform: scale(-1, 1);
+      }
+      @include hover {
+        color: $colorBtnText !important;
+        background-color: $colorBtn;
+        transition: color 0.4s, background 0.4s;
+        &::after {
+          left: 3%;
+          @include iconArrow;
+          transition: left 0.4s;
+        }
+      }
+    }
+  }
+}

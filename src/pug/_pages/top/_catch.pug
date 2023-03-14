@@ -1,0 +1,32 @@
+<!--インクルード：ポイントコンテンツ -->
+
+-
+  let point = top.catch ? top.catch : [];
+
+
+section#taoyaCatch.loadIn
+  .taoyaCatch__txt
+    .contentInner
+      h2.taoyaCatch__txt-ttl.scrollIn.up.each !{top.catchTtl}
+      p.taoyaCatch__txt-copy.scrollIn.up.each !{top.catchTxt}
+    .taoyaCatch__txt-bg
+      svg(version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1280 320" style="enable-background:new 0 0 1280 320;" xml:space="preserve")
+        path(class="st0" d="M1280,20.5v-7c-106.6-20.6-208.9-15.6-310.2,2.2C832.4-4.9,700.9,15,577.5,48.6 C385.6,35.8,190.9,66.4,0,138.2v4.4C199.8,61.9,389.6,41.5,559,53.8c-163.3,46.5-312.2,115-441.9,142.4C78,195.6,38.9,192.7,0,187.8 v7.7c26.4,3.8,52.6,6.3,78.5,7.7c-27.1,4-53.3,5.8-78.5,4.7v7c31.7,0.4,65.3-3.6,100.5-10.7c226.3,7.4,434.6-65.5,636.6-125 c157.3,33.3,288.7,90.3,383,140.5c-145.7-64.9-257.5-80.5-355.9-77.7c-210,6.1-346.3,122.4-571.5,128.9 C135.5,272.4,71.4,257,0,240.8v12.6c71.6,16.2,135.4,20.9,192.9,19.3c225.8-6.6,362.2-122.9,571.5-128.9 c117.8-3.4,255.5,24.7,447.7,129.2c40.7,25.8,64.4,44.2,68,47v-16.7c-20.5-12.2-40.4-23.5-59.7-34C1071.9,172,916,107.2,756.7,73.4 c70.9-20.6,141.1-39.1,211-51.5C1070.3,36.7,1175,74,1280,145v-8.8c-99.8-64.8-197.5-101.1-292.4-117.7 C1084.9,2.9,1181.9-0.1,1280,20.5 M135.1,196.4c129.3-31.9,279.2-98,441.5-141.2c50.4,4.4,100.4,11.6,150,21.7 C542.3,132,351.9,196.5,135.1,196.4 M745.8,71.2c-49.3-10-99.2-17.1-149.3-21.2C709.3,21.5,827.8,5.1,949.3,19.5 C881.5,32.5,814,51,745.8,71.2")
+
+  each val in point
+    .c_point
+      picture.c_point_img
+        source(media='(max-width: 750px)' srcset=imgPath + val.img + '_sp.jpg' width='376' height='812')
+        img(src=imgPath + val.img + '.jpg' alt="背景画像" width='1280' height='720' decoding='async' loading="lazy")
+      .c_point_text
+        h3.c_point_ttl.scrollIn.up.each !{val.title}
+        p.c_point_lead.scrollIn.up.each !{val.lead}
+        p.c_point_copy.scrollIn.up.each !{val.text}
+        a(href=val.link class="c_link-txt -white scrollIn up each") 詳しくはこちら
+
+  .taoyaCatch__btn
+    .contentInner
+      .taoyaCatch__btn-btn.scrollIn.up.each
+        a(href="/features/" class="c_btn") ホテルの魅力をもっと見る
+
+<!--/インクルード：宿泊プランコンテンツ -->

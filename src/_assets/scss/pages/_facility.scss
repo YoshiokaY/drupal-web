@@ -1,0 +1,159 @@
+@use "../abstracts" as *;
+@use "../components/extend" as *;
+@use "../components/general/_svg" as *;
+@use "sass:math";
+
+#taoyaFacility {
+  padding-top: 2.1rem;
+  @include mq() {
+    padding-top: 0;
+  }
+
+  .facilityContent {
+    padding: 8rem 0 6.5rem;
+    @include mq() {
+      padding: spSize(40) 0;
+    }
+    .c_ttl {
+      &_h2 {
+        margin-bottom: 8rem;
+        @include mq() {
+          margin-bottom: spSize(50);
+        }
+      }
+      &_h3 {
+        margin: 3rem auto 2rem;
+        text-align: left;
+        @include mq() {
+          margin: spSize(20) auto;
+        }
+      }
+    }
+    .columnRow {
+      gap: 5.6rem 3.6%;
+      @include mq() {
+        gap: spSize(24) 0;
+      }
+    }
+    .facilityBlock {
+      // margin-bottom: 5.6rem;
+      img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 447 / 248;
+        object-fit: cover;
+      }
+      &_txt {
+        line-height: 2.1;
+        letter-spacing: 0.05em;
+      }
+      .c_btn {
+        margin-top: 4rem;
+        @include mq() {
+          margin-top: spSize(24);
+        }
+      }
+      @include mq() {
+        padding-bottom: spSize(24);
+        border-bottom: 1px solid $colorGrayScale;
+      }
+    }
+  }
+}
+
+#facilityPrice {
+  padding: 5.5rem 0;
+  @include mq() {
+    padding: spSize(40) 0 spSize(40);
+  }
+  .c_ttl_h2 {
+    margin: 0 auto 8rem;
+    text-align: center;
+    letter-spacing: 0.08em;
+    @include fontsize(36, 24);
+    @include mq() {
+      margin-bottom: spSize(24);
+    }
+  }
+  .columnRow > .columnBlock:first-child {
+    @include mq() {
+      margin-bottom: spSize(80);
+    }
+  }
+  .facility_icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 1rem;
+    justify-content: space-between;
+    max-width: 35rem;
+    margin: auto;
+    @include mq() {
+      gap: spSize(20) 1rem;
+      max-width: inherit;
+    }
+    .facility_icon {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0 1rem;
+      align-items: center;
+      justify-content: flex-start;
+      width: calc(50% - 5px);
+      .facility_icon_name {
+        @include fontsize(14, 12);
+      }
+      .facility_icon_img {
+        width: 4rem;
+        img {
+          width: 100%;
+        }
+        @include mq() {
+          width: 30%;
+        }
+      }
+    }
+  }
+}
+
+#facilityTime {
+  padding: 5.5rem 0;
+  @include mq() {
+    padding: spSize(40) 0 spSize(80);
+  }
+  .c_ttl {
+    &_h2 {
+      margin-bottom: 8rem;
+      @include mq() {
+        margin-bottom: spSize(56);
+      }
+    }
+    &_h3 {
+      font-weight: normal;
+      text-align: left;
+    }
+  }
+  .timeContainer {
+    margin-bottom: 4rem;
+    @include mq() {
+      margin-bottom: spSize(37);
+    }
+  }
+  .u_dl {
+    margin-top: 2.4rem;
+    &-item {
+      padding: 2rem 0;
+      @include mq() {
+        padding: spSize(20) 0;
+      }
+      margin-bottom: 0;
+      &:first-child {
+        border-top: 1px solid $colorGrayScale;
+      }
+      dt {
+        @include fontsize(16, 14);
+      }
+      dd {
+        @include fontsize(14, 12);
+      }
+    }
+  }
+}

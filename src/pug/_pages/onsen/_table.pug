@@ -1,0 +1,40 @@
+<!-- ブロックコンテンツ：温泉について -->
+section#onsenAbout
+  .contentInner
+    h2.c_ttl_h2.scrollIn.up.each 温泉について
+    dl.u_dl.-border.-column.scrollIn.up.each
+      <!-- リスト表示部分（増減する場合は以下をコピーor削除） -->
+      div.u_dl-item
+        dt: h3.c_ttl_h3 源泉名
+        dd !{content.onsen}
+      <!-- /リスト表示部分 -->
+      div.u_dl-item
+        dt: h3.c_ttl_h3 泉質
+        dd !{content.senshitu}
+      div.u_dl-item
+        dt: h3.c_ttl_h3 効能
+        dd !{content.kono}
+      div.u_dl-item
+        dt: h3.c_ttl_h3 入浴時間
+        dd !{content.time}
+      if page.change == true
+        div.u_dl-item
+          dt: h3.c_ttl_h3 男女入替制
+          dd
+            p あり
+      div.u_dl-item
+        dt: h3.c_ttl_h3 注意事項
+        dd
+          ul.c_list
+            li 刺青・タトゥー（ファッションタトゥーを含む）をされている方のご入浴は固くお断りいたします。
+            li 飲酒されている方のご入浴はくれぐれもご注意ください。
+            li オムツをご使用のお子様は備え付けのベビーバスをご利用ください。
+            li 天候等の状況により、露天風呂がご利用いただけない場合がございます。
+            li 7歳以上または身長120cm以上のお子様は、各男女性別の浴場をご利用ください。
+          span なお、条例改正等により、今後変更になる可能性があります。
+      div.u_dl-item
+        dt: h3.c_ttl_h3 感染症対策
+        dd ・感染症防止のための取り組みに関しましては
+          a(href='https://www.ooedoonsen.jp/coronavirus/' target='_blank' rel='noopener noreferrer') こちら
+          | をご覧ください。
+<!-- /ブロックコンテンツ：温泉について -->

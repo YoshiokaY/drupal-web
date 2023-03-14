@@ -1,0 +1,39 @@
+<!-- 食事ブロックコンテンツ -->
+
+-
+  let slide = content.slide ? content.slide : [];
+
+section#restaurantSlide
+  .slideBlock
+    each val in slide
+      .foodBlock
+        <!--インクルード：食事キャッチコンテンツ -->
+        .restaurantSlide__txt
+          .contentInner
+            .slideTtl
+              h2.c_ttl_h2.scrollIn.up.each !{val.ttl}
+                span.c_ttl_h2-en !{val.en}
+            .slideTxt.scrollIn.up.each !{val.text}
+
+          .restaurantSlide__txt-bg
+            figure
+              source(media='(max-width: 750px)' srcset=imgPath + val.bgImg + '.jpg' width='' height='')
+              img(src=imgPath + val.bgImg + '_sp.jpg' alt='altが入ります' loading='lazy' decoding='async')
+        <!--/インクルード：食事キャッチコンテンツ -->
+
+        <!--ブロック：スライドコンテンツ -->
+        each slide in val.slides
+          - let item = slide
+
+        if val.ttl != '別注料理ほか'
+          +sliderCenterMode(item, val.slides, index)
+        else
+          +sliderThreeColmTypeMenu(item, val.slides, index)
+        <!--/ブロック：スライドコンテンツ -->
+
+        each opt in val.options
+          if opt.ttl
+            .subText.contentInner.scrollIn.up.each
+              .subText__inner
+                h3.c_ttl_h3 !{opt.ttl}
+                p !{opt.txt}

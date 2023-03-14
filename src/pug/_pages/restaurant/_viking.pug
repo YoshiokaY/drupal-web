@@ -1,0 +1,23 @@
+<!--ブロック：季節のバイキングコンテンツ -->
+
+-
+  let food = content.food ? content.food : [];
+
+section#restaurantBlock
+  .contentInner
+    each val, index in food
+      .foodBlock
+        h2.foodBlock__ttl.scrollIn.up.each !{val.ttl}
+        p.foodBlock__days.scrollIn.up.each !{val.period}
+
+        <!-- スライド・メイン部分 -->
+        each slide in val.slides
+          - let item = slide
+        +sliderOneColm(item, val.slides, index)
+        <!--//  /スライド・メイン部分 -->
+
+        p.foodTextTtl.scrollIn.up.each: strong !{val.lead}
+        .foodText.scrollIn.up.each !{val.text}
+        a.c_btn.scrollIn.up.each(href=val.link) 詳細はこちら
+
+<!--/ブロック：季節のバイキングコンテンツ -->

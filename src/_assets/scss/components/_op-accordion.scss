@@ -1,0 +1,132 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+///-----------------アコーディオン//
+
+.pullDown {
+  position: relative;
+  width: 100%;
+
+  > .pull-inner {
+    display: none;
+    width: 100%;
+    padding-top: 1em;
+  }
+
+  > .pull-btn {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    // padding: .5em 1em;
+    // font-size: 2.4rem;
+    // font-weight: bold;
+    cursor: pointer;
+    // text-align: center;
+    // letter-spacing: 0.05em;
+    // color: $colorTextReversal;
+    // border-radius: 8px;
+    // background: $color01;
+    background: none;
+    border: 0;
+
+    img {
+      @media screen and (max-width: 767px) {
+        width: 80%;
+      }
+    }
+
+    > span {
+      position: absolute;
+      top: 0;
+      right: 5%;
+      bottom: 0;
+      display: inline-block;
+      width: 31px;
+      height: 31px;
+      margin: auto;
+      vertical-align: middle;
+      background: transparent;
+      border: 3px solid $colorTextReversal;
+      border-radius: 50%;
+      @media screen and (max-width: ($viewTablet - 1)+px) {
+        width: 21px;
+        height: 21px;
+        border-width: 2px;
+      }
+      &::after,
+      &::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 15px;
+        height: 3px;
+        margin: auto;
+        content: "";
+        background: $colorTextReversal;
+        @media screen and (max-width: ($viewTablet - 1)+px) {
+          width: 10px;
+          height: 2px;
+          border-width: 2px;
+        }
+      }
+      &::before {
+        transition: 0.4s;
+        transform: rotate(90deg);
+      }
+    }
+    &.active {
+      > span:before {
+        transition: 0.4s;
+        transform: none;
+      }
+    }
+  }
+}
+
+// @if $spMode == false {
+//   @media screen and  ( max-width : ($viewTablet - 1)+px ) {
+//     .sp_pull {
+//       > .pull-inner {
+//         display: none;
+//         width: 100%;
+//       }
+//       > p:first-child {
+//         position: relative;
+//         margin: 0;
+//         padding: 1.3em;
+//         font-size: 17px;
+//         font-weight: bold;
+//         cursor: pointer;
+//         text-align: center;
+//         letter-spacing: 0.1em;
+//         color: $colorTextReversal;
+//         background: $color01;
+
+//         &:after {
+//           content: '';
+//           position: absolute;
+//           top: 0;
+//           right: 5%;
+//           bottom: 0;
+//           width: 8px;
+//           height: 8px;
+//           margin: auto;
+//           transition: .4s;
+//           transform: rotate(45deg);
+//           border-right: 2px solid #fff;
+//           border-bottom: 2px solid #fff;
+//         }
+//         &.active {
+//           &:after {
+//             content: '';
+//             transition: .4s;
+//             transform: rotate(225deg);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

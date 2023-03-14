@@ -1,0 +1,18 @@
+<!--インクルード：CMコンテンツ -->
+-
+  let blocks = content.block ? content.block : [];
+
+section#taoyaCommercial
+  .contentInner
+    .columnRow.-blocks2
+      each block in blocks
+        .columnBlock
+          .youtubeWrapper
+            iframe(src="https://www.youtube.com/embed/"+ block.url +"?start=0&amp;rel=0&amp;controls=0&amp;disablekb=1&amp;showinfo=0&amp;modestbranding=1&amp;iv_load_policy=3&amp;fs=0&amp;autoplay=0&amp;playsinline=1&amp;loop=1&amp;playlist=" + block.url + "&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A3000&amp;widgetid=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture web-share" allowfullscreen width="447" height="260" loading="lazy")
+          h2.c_ttl_h2 !{block.ttl}
+          dl
+            dt ストーリー
+            dd !{block.txt}
+    a(href="https://www.youtube.com/@ooedoonsen_monogatari" target="_blank" rel="noopener noreferrer" class="c_btn") 大江戸温泉公式<br>Youtubeチャンネルはこちら
+
+<!--/インクルード：CMコンテンツ -->

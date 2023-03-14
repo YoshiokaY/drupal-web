@@ -1,0 +1,111 @@
+@use "../abstracts" as *;
+
+.searchLabel {
+  display: block;
+}
+
+.searchContainer {
+  .searchDtails {
+    margin-bottom: 1.5em;
+  }
+  .searchTitle {
+    margin-bottom: 1em;
+    label {
+      font-weight: bold;
+    }
+  }
+  .pull-inner {
+    margin-bottom: 5%;
+  }
+}
+
+.searchList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 5%;
+}
+
+.searchCheck {
+  input[type="checkbox"] {
+    position: absolute;
+    background: none;
+    border: 0;
+    appearance: none;
+    &:checked ~ label {
+      &::after {
+        position: absolute;
+        top: 0.5rem;
+        bottom: 0;
+        left: 0.8rem;
+        display: inline-block;
+        width: 0.6rem;
+        height: 1.3rem;
+        content: "";
+        border: 2px solid getColor(--colorText);
+        border-width: 0 2px 2px 0;
+        transform: rotate(30deg);
+      }
+    }
+  }
+  label {
+    position: relative;
+    padding: 3px 5px;
+    padding-left: 1.5em;
+    border: 2px solid transparent;
+    &:hover {
+      @include mq(min) {
+        @include fillText(1px, getColor(--colorTextReversal));
+        @include bgDotted(getColor(--colorText, 0.4), 5);
+        color: getColor(--colorText);
+        border-color: getColor(--colorText);
+        transition: 0.4s;
+      }
+    }
+    &:focus-visible {
+      @include fillText(1px, getColor(--colorTextReversal));
+      @include bgDotted(getColor(--colorText, 0.4), 5);
+      color: getColor(--colorText);
+      border-color: getColor(--colorText);
+      transition: 0.4s;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 3px;
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: auto;
+      vertical-align: middle;
+      content: "";
+      background-color: getColor(--colorBody);
+      border: 1px solid getColor(--colorGrayScale);
+      border-radius: 2px;
+    }
+  }
+}
+
+.detailBtn {
+  position: relative;
+  padding-left: 1em;
+  color: getColor(--colorText);
+  &::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin: auto;
+    content: "";
+    border: 2px solid getColor(--colorText);
+    border-width: 2px 2px 0 0;
+    transform: rotate(45deg);
+  }
+}
+
+.pullDown {
+  margin-top: 1em;
+}

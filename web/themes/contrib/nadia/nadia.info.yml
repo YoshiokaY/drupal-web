@@ -1,0 +1,15 @@
+name: nadia
+type: theme
+description: "nadia theme devolpment"
+package: Other
+core_version_requirement: ^8 || ^9 || ^10
+
+#Libraries
+libraries:
+  - nadia/global-components
+base theme: classy
+#Regions
+regions:
+  header: Header
+  content: Content
+  footer: Footer

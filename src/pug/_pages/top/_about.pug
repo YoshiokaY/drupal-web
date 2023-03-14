@@ -1,0 +1,23 @@
+//- TAOYAについて
+section#taoyaAbout
+  .contentInner
+    h2.c_ttl_h2.-section.scrollIn.up.each TAOYAについて
+      span.c_ttl_h2-en ABOUT TAOYA
+    p.taoyaAbout__label.scrollIn.up.each ゆったりと、たおやかに。
+    p.taoyaAbout__copy.scrollIn.up.each 大江戸温泉物語が培ってきた手軽さをそのままに、<br class="pc">「ゆったりと、たおやかに」をコンセプトにした癒しの温泉旅館です。
+
+  .taoyaAbout__btns
+    .contentInner
+      ul
+        li.scrollIn.left.each: a(href="https://taoya-shima.ooedoonsen.jp/" target="_blank" rel="noopener noreferrer")
+          picture
+            source(media='(max-width: 750px)' srcset=imgPath + 'taoya_bnr001_sp.jpg' width='335' height='178')
+            img(src=imgPath + '/taoya_bnr001.jpg' alt='TAOYA 志摩' width='901' height='256' decoding='async')
+        li.scrollIn.left.each: a(href="https://taoya-nikko.ooedoonsen.jp/" target="_blank" rel="noopener noreferrer")
+          picture
+            source(media='(max-width: 750px)' srcset=imgPath + 'taoya_bnr002_sp.jpg' width='335' height='178')
+            img(src=imgPath + '/taoya_bnr002.jpg' alt='TAOYA 日光霧降' width='901' height='256' decoding='async')
+        li.scrollIn.left.each: a.-disable(href="" target="_blank" rel="noopener noreferrer")
+          picture
+            source(media='(max-width: 750px)' srcset=imgPath + 'taoya_bnr003_sp.jpg' width='335' height='178')
+            img(src=imgPath + '/taoya_bnr003.jpg' alt='TAOYA 岩沼屋' width='901' height='256' decoding='async')

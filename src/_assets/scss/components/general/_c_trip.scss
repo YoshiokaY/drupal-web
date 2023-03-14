@@ -1,0 +1,53 @@
+@use "../../abstracts" as *;
+@use "sass:math";
+
+.c_trip {
+  position: relative;
+  z-index: 1;
+
+  &_img {
+    position: relative;
+    z-index: 0;
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1280 / 434;
+      object-fit: cover;
+      @include mq() {
+        aspect-ratio: 375 / 377;
+      }
+    }
+  }
+
+  &_txt {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+    .c_ttl_h2,
+    p {
+      color: #fff;
+
+      &-en {
+        color: #fff;
+      }
+    }
+
+    p {
+      @include fontsize(14, 14);
+      margin-top: 51px;
+      margin-bottom: 40px;
+      line-height: 1;
+
+      @include mq(sp, 750) {
+        margin-top: spSize(38);
+        margin-bottom: spSize(40);
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+// Vendors
+@use "../../../node_modules/normalize.css/normalize.css";
+
+// Base
+@use "base/default";
+@use "base/shima";
+
+//plugin
+// @use "../../../node_modules/lity/dist/lity.min.css";
+@use "../../../node_modules/slick-carousel/slick/slick.css";
+
+// Components
+@use "components/general/*.scss";
+// @forward "components/op-tab";
+// @forward "components/op-flow";
+// @forward "components/op-faq";
+// @forward "components/op-news";
+@forward "components/op-accordion";
+// @forward "components/op-modal";
+// @forward "components/op-form";
+
+// Utility
+@use "utility/u_dl";
+
+// Layouts
+@use "layouts/header";
+@use "layouts/footer";
+@use "layouts/main";
+
+// Pages
+// @use "pages/_onsen.scss";
+// @use "pages/_common.scss";
+// @use "pages/_top.scss";
+// @use "pages/_restaurant.scss";
+// @use "pages/_news.scss";
+@forward "pages/*.scss";

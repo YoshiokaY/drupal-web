@@ -1,0 +1,51 @@
+@use "../../abstracts" as *;
+@use "./_svg" as *;
+@use "sass:math";
+
+.fixed-search-btn {
+  position: fixed;
+  right: 0;
+  bottom: 130px;
+  z-index: 101;
+  transition: 0.2s;
+  transform: translateX(100%);
+
+  @include mq(pc, 750) {
+    display: none;
+  }
+
+  &.isShow {
+    transform: none;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: spSize(68);
+    height: spSize(60);
+    color: #fff;
+    text-align: center;
+    background: var(--color03);
+    @include fontsize(10, 10);
+
+    &::before {
+      width: spSize(21);
+      height: spSize(20);
+      margin-right: auto;
+      margin-bottom: spSize(8);
+      margin-left: auto;
+      content: "";
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: spSize(21) spSize(20);
+      @extend %bgIconCalenderWhite;
+    }
+  }
+}
+
+body:not(.-top) {
+  .fixed-search-btn {
+    display: none;
+  }
+}

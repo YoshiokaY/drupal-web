@@ -1,0 +1,54 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+///-----------------タブコンテンツ//
+
+.tab-inner {
+  width: 100%;
+  margin: auto;
+}
+
+.tabContent {
+  display: none;
+  padding: 1.5em 0.5em;
+  transition: 0.4s;
+}
+
+.tabButton {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100%;
+
+  > li {
+    position: relative;
+    opacity: 0.4;
+    // padding: .5em;
+    // line-height: 1;
+    // cursor: pointer;
+    // transition: .4s;
+    // text-align: center;
+    // opacity: .4;
+    // color: #969696;
+    // // border: 1px solid $color01;
+    // // border-bottom: 0;
+    // // background: $color01;
+    // flex: 1;
+    transition: 0.4s;
+
+    &:hover,
+    &.active {
+      // color: #333;
+      // border-color: #ddd;
+      // background: #fff;
+      opacity: 1;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+      transform: translateY(10px);
+    }
+    &.active {
+      text-decoration: none;
+      pointer-events: none;
+    }
+  }
+}

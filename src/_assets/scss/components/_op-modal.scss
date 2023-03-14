@@ -1,0 +1,97 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+//----------------- モーダル //
+
+.remodalBtn {
+  position: relative;
+  &::after {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: auto;
+    font-family: "Material Icons";
+    font-size: 200%;
+    color: $colorTextReversal;
+    content: "\e8ff";
+    background: $color02;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px 3px rgba(#333, 0.25);
+  }
+}
+
+.modal {
+  position: relative;
+  display: table !important;
+  margin-bottom: 1em !important;
+  table-layout: fixed;
+  img {
+    width: 100%;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  &::after {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: auto;
+    font-family: "Material Icons";
+    font-size: 200%;
+    color: $colorTextReversal;
+    content: "\e8ff";
+    background: $color02;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px 3px rgba(#333, 0.25);
+  }
+  @include hover {
+    img {
+      opacity: 0.7;
+      transition: 0.4s;
+    }
+  }
+}
+
+.modalCaption {
+}
+
+.remodal {
+  // width: auto;
+  padding: 20px 25px;
+  background-color: transparent;
+  background-color: #fff;
+  .remodal-close {
+    top: -10px;
+    right: -10px;
+    left: auto;
+    width: 44px;
+    height: 44px;
+    color: $colorTextReversal;
+    background: $color02;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px 3px rgba(#333, 0.25);
+    &::before {
+      top: 50%;
+      right: 0;
+      margin: auto;
+      font-size: 200%;
+      transform: translateY(-50%);
+    }
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.remodal-overlay {
+  background-color: rgba(#000, 0.5);
+}

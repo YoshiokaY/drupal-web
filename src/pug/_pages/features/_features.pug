@@ -1,0 +1,25 @@
+<!--ブロック：魅力コンテンツ -->
+-
+  let blocks = content.block ? content.block : [];
+
+section#taoyaFeatures
+  .contentInner
+    if key == "shima"
+      figure.taoyaFeatures__pic.scrollIn.up
+        picture
+          source(media='(max-width: 750px)' srcset=imgPath + 'banner_img002_sp.jpg' width='335' height='112')
+          img(src=imgPath + 'banner_img002.jpg' alt=page.name + 'での過ごし方' width='1050' height='200' decoding='async' loading="lazy")
+    each block in blocks
+      .columnRow.taoyaFeatures__wrap.scrollIn.up
+        .columnBlock
+          figure.rommImg: img(src=imgPath + block.img, alt=block.ttl width="464" height="310" loading="lazy" decoding="async")
+        .columnBlock
+          h3.c_ttl_h3 !{block.ttl}
+          p !{block.txt}
+          if block.link
+            if block.ttl !== '豪華ダンスホール'
+              a.c_btn(href=block.link) 詳細はこちら
+            else
+              a.c_btn(href=block.link) ダンスのイベントを見る
+
+<!--/ブロック：魅力コンテンツ -->
