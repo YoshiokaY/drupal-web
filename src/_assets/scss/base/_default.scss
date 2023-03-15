@@ -225,7 +225,9 @@ small {
     pointer-events: none;
   }
 }
-.contentInner {
+.contentInner,
+.node__content,
+.voice-page .view-content {
   width: 100%;
   max-width: $containerSize + px;
   padding: 0;

@@ -2,187 +2,191 @@
 @use "../components/general/svg" as *;
 //-----------------フッター //
 
-#global_footer {
-  padding-top: 56px;
-  background: $bgFooter;
-  box-shadow: none;
-
-  @include mq(sp, 750) {
-    padding-top: spSize(49);
+footer {
+  background-color: $colorDark;
+  &.node__meta {
+    max-width: $containerSize + px;
+    margin: 1rem auto;
+    background-color: $bgBody;
   }
+}
 
-  .footer_address {
-    text-align: center;
-    @include fontsize(14, 12);
+.footNaviContainer {
+  padding: 6.5em 0;
+  @include mq() {
+    padding: 4em 0;
   }
-
-  .footer_content_wrapper {
-    color: #fff;
-    background: $bgFooterContent;
-
-    .search_icon,
-    .iifuro_icon,
-    .tel_icon {
-      &::before {
-        filter: invert(1);
-      }
-    }
-
-    .form_inner .form_parts.submit_button {
+}
+.footNavi {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  max-width: 84rem;
+  margin: 0 auto;
+  @include mq() {
+    display: block;
+    width: 88%;
+  }
+  li {
+    width: 47%;
+    @include mq() {
       width: 100%;
-      box-shadow: none;
-
-      @include mq(sp, 750) {
-        margin-bottom: spSize(10);
-      }
-
-      button.c_btn {
-        padding: 1em 2em 1em 1.5em;
-        margin-left: 0;
-        background: var(--color02);
-        border-color: var(--color02);
-        border-radius: 0;
-        @include fontsize(16);
-
-        &::after {
-          top: 0;
-          right: 5%;
-          bottom: 0;
-          left: auto;
-          transform: none;
-          @include iconSearch;
-        }
-
-        @include hover {
-          color: var(--color02) !important;
-          background: #fff;
-
-          &::after {
-            background-image: var(--iconSearchFooter);
-          }
-        }
+      + li {
+        margin-top: 2.2em;
       }
     }
-
-    .box_content_note {
-      @include mq(sp, 750) {
-        line-height: 1.5;
-      }
-    }
-
-    .iifuro_box {
-      .c_btn {
-        margin-left: 0;
-        background: var(--color01);
-        border-color: var(--color01);
-
-        @include mq(sp, 750) {
-          margin-bottom: spSize(10);
-        }
-
-        @include hover {
-          color: var(--color01) !important;
-          background: #fff;
-        }
-
-        &::after {
-          display: none;
-        }
-      }
-    }
-
-    .contact_text {
-      line-height: 1.5;
-    }
-
-    .contact_box {
-      .tel_link {
-        &::before {
-          filter: grayscale(100%) invert(1) contrast(200%);
-        }
-      }
-    }
-  }
-
-  .link_groups {
-    max-width: inherit;
-
-    li {
-      a {
-        line-height: 1.3;
-        text-decoration: none;
-      }
-    }
-
-    .group_name {
-      font-weight: bold;
-    }
-  }
-
-  .link_group {
-    @include mq() {
-      padding: 0 !important;
-    }
-
-    &:last-of-type {
-      @include mq(min) {
-        width: 10%;
-      }
-    }
-
-    &.wrapper {
-      @include mq(min) {
-        width: 55%;
-      }
-    }
-
     a {
-      text-decoration: none !important;
-    }
-
-    .footer_accord_btn {
-      @include mq(sp, 750) {
-        text-align: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      min-height: 12rem;
+      padding-left: 10%;
+      background: $colorTextReversal;
+      border: 2px solid $colorText;
+      box-shadow: 8px 8px $colorText;
+      @include mq() {
+        min-height: 8.6rem;
+        border-width: 1px;
+      }
+      @include hover {
+        box-shadow: none;
+      }
+      &::before {
+        display: block;
+        flex-shrink: 0;
+        width: 21%;
+        aspect-ratio: 1 / 1;
+        content: "";
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border: 2px solid $colorText;
+        border-radius: 50%;
+        @include mq() {
+          max-width: 54px;
+          height: 54px;
+          border-width: 1px;
+        }
       }
     }
   }
-
-  .global_logo,
-  .copyright {
-    text-align: center;
-  }
-
-  #toTop {
-    position: fixed;
-    right: 5px;
-    bottom: 0;
-    z-index: 10;
-    max-width: 6%;
-    text-align: center;
-    cursor: pointer;
-
+  &_text {
+    font-size: 3.2rem;
+    font-weight: bold;
+    line-height: 1;
     @include mq() {
-      width: spSize(147);
-      max-width: inherit;
-      height: spSize(185);
-    }
-
-    img {
-      width: auto;
-      max-width: 100%;
-      height: auto;
-      max-height: 100%;
+      font-size: 2.4rem;
     }
   }
-  .btn_to_top {
-    @include mq() {
-      bottom: 70px;
+  &_about {
+    a {
+      .footNavi_text {
+        margin-left: 4%;
+        @include mq() {
+          margin-left: 5%;
+        }
+      }
+      img {
+        display: block;
+        width: 21.9rem;
+        @include mq() {
+          width: 16.5rem;
+        }
+      }
+      span {
+        display: block;
+        padding-top: 0.2em;
+        font-size: 2.4rem;
+        font-weight: bold;
+        @include mq() {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+  &_contact {
+    a {
+      .footNavi_text {
+        margin-left: 8%;
+        @include mq() {
+          margin-left: 5%;
+        }
+      }
     }
   }
 }
 
-@media screen and (max-width: 1150px) {
-  #global_footer .link_groups .link_group {
+::-webkit-full-page-media,
+:future,
+:root .footNavi li a:hover {
+  box-shadow: 8px 8px $colorText;
+}
+
+.copyContainer {
+  padding: 0.5em 0;
+  background: $bgCopy;
+  @include mq() {
+    padding: 0.7em 0;
+  }
+  .copyRight {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+#toTop {
+  position: fixed;
+  right: 2%;
+  bottom: -100px;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 8.8rem;
+  height: 8.8rem;
+  background: $colorText;
+  @include mq() {
+    width: 6.4rem;
+    height: 6.4rem;
+  }
+
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    align-items: center;
     width: 100%;
+    height: 20%;
+    margin: auto;
+    font-family: $materialIcon;
+    font-size: 3.5rem;
+    color: $colorTextReversal;
+    content: "\f1df";
+    transition: 0.2s;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    @include mq() {
+      height: 10%;
+      font-size: 2.5rem;
+    }
+  }
+  span {
+    margin-bottom: 1em;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $colorTextReversal;
+    @include mq() {
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
   }
 }

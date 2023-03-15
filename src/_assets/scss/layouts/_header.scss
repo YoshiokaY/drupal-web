@@ -4,11 +4,24 @@
 @use "sass:math";
 
 header {
-  background-color: $color03;
+  padding: 3em 3%;
+  background-color: $color05;
   border-bottom: 1px solid $colorText;
   .region-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  ul.menu {
+    display: flex;
+    gap: 0 10px;
+    justify-content: flex-end;
+    .menu-item {
+      @include fontsize(16);
+      color: $colorText;
+      a {
+        color: $color03;
+      }
+    }
   }
 }
