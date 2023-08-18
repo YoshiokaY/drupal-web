@@ -1,0 +1,18 @@
+import "jquery";
+import "lity";
+// import "./utils/lity";
+// import 'drawsvg';
+// import particles from "particles.js";
+import "./utils/animation";
+import "slick-carousel";
+// import "./utils/opening";
+// import "./utils/accessibility";
+// import "./utils/slide";
+// import "./utils/tab";
+// import "./utils/modal";
+// import "./utils/accordion";
+// import "./utils/style";
+import "./lit/lit";
+// import "./utils/accordion";
+// import objectFitImages from 'object-fit-images';
+// objectFitImages();

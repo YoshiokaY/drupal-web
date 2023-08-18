@@ -1,0 +1,15 @@
+extends ../_base/_layout
+
+block vars
+  include ../_contents/_top
+  - let slug = "top"
+  - let head = top["head"]
+  - let content = top["content"]
+  - let imgPath = common["head"].path + slug + '/'
+
+block contents
+  section#news_body
+    .contentInner
+  p
+    a.c_btn(href="/") 一覧へ戻る
+

@@ -12,12 +12,13 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
+    "useDefineForClassFields": false,
     "resolveJsonModule": true,
     "sourceRoot": "./src",
     "outDir": "./htdocs/_assets/js/",    // 書き出しフォルダの指定
   },
   "include": [
-    "./src/_assets/ts/*.ts"            // 監視対象の指定
+    "./src/_assets/js/*.ts"            // 監視対象の指定
   ],
   "exclude": [
     "node_modules", "**/*.spec.ts"

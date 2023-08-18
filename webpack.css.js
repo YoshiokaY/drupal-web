@@ -4,19 +4,21 @@ const glob = require("glob");
 //cssコンパイル用プラグイン
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 
 const devtool =
   process.argv[2] === "--mode=development" ? "cheap-module-source-map" : false;
 require("dotenv").config();
 //ファイルコピープラグイン
-const CopyFilePlugin = require("copy-webpack-plugin");
 const title = process.env.SITE_NAME;
-// const wpDir = "wp-content/themes/" + title + "/_assets/css/";
-const wpDir = "web/themes/contrib/nadia/css/";
+const wpDir = "wp-content/themes/" + title + "/_assets/css/";
+const PATHS = {
+  src: path.join(__dirname, "src"),
+};
 
 //scssディレクトリ直下の_がついていないファイルを全て取得してキーに入れる（笹本マジック）
 const scssDir = "src/_assets/scss";
-const distDir = "htdocs/taoya_common/css/";
+const distDir = process.env.ASSETS_PATH + "css/";
 const entries = glob
   .sync("**/*.scss", { ignore: "**/_*.scss", cwd: scssDir })
   .map(function (key) {
@@ -82,11 +84,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
     }),
-
-    new CopyFilePlugin({
-      patterns: [
-        { from: distDir, to: wpDir, force: true, noErrorOnMissing: true },
-      ],
+    new PurgeCSSPlugin({
+      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+      safelist: {
+        //パージから除外するセレクタ
+        standard: [/^slick/, /^lity/],
+      },
     }),
   ],
 };

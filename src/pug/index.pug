@@ -1,24 +1,13 @@
--
-  var pages = [
-    "shima",
-      "nikko",
-  ]
+extends ./_base/_layout
 
-ul.ul00
-  each pag in pages
-    li: a(href="/" + pag + "/") #{pag}
+block vars
+  include ./_contents/_top
+  //- - let site = "shima"
+  - let slug = "top"
+  - let head = top["head"]
+  - let content = top["content"]
+  - let imgPath = common["head"].path + slug + '/'
 
-h1.c_ttl_h1 h1見出し
-h2.c_ttl_h2 h2見出し
-  span.c_ttl_h2-en ENGLISH
-h3.c_ttl_h3 h3見出し
-h4.c_ttl_h4 h4見出し
-p 本文
-small 小さいテキスト
+block contents
+  include /_pages/top/_top
 
-a.c_btn 空室検索
-a.c_btn.-invert 空室検索
-a.c_btn.-search 空室検索
-a.c_btn.-invert.-search 空室検索
-
-link(rel="stylesheet", href="/taoya_common/css/taoya_shima.css")

@@ -1,9 +1,12 @@
 .DS_Store
 Thumbs.db
 node_modules
-htdocs
 *.log
 
-*.code-workspace
-vendor
+htdocs/
 
+vendor
+tmp
+
+/.gitattributes
+node_modules

@@ -3,6 +3,70 @@
 @use "../components/general/_svg" as *;
 @use "sass:math";
 
+.c_ttl {
+  &_h1 {
+    font-weight: bold;
+    text-align: center;
+  }
+  &_h2 {
+    padding: 0;
+    padding-left: 0.3em;
+    margin: 1em 0;
+    font-weight: bold;
+    color: $color01;
+    border-left: 4px solid $color01;
+  }
+}
+
+#news_body {
+  article {
+    padding: 8rem 0;
+    ul {
+      padding-left: 1em;
+      li {
+        list-style-type: disc;
+      }
+    }
+  }
+}
+
+.c_btn {
+  margin: 1em auto;
+}
+
+.catBtn {
+  padding: 0.3em 0.8em;
+  color: $colorTextReversal;
+  cursor: pointer;
+  background-color: $color02;
+  border-radius: 8px;
+  &.-event {
+    background-color: $color01;
+  }
+  &.-release {
+    background-color: $color03;
+  }
+}
+
+.newsList {
+  &_item {
+    display: flex;
+    gap: 0 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0.8em 0;
+    border-bottom: 1px solid $colorText;
+    dt {
+      time {
+        display: inline-block;
+        width: 120px;
+        margin-right: 0.5em;
+      }
+    }
+  }
+  margin-bottom: 50px;
+}
+
 .kvSlider {
   img {
     width: 100%;

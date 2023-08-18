@@ -4,21 +4,17 @@ const devtool =
 //WPテーマファイル内への出力先を環境変数で指定
 require("dotenv").config();
 const title = process.env.SITE_NAME;
-// const wpDir = "wp-content/themes/" + title + "/_assets/";
-const wpDir = "web/themes/contrib/nadia/";
+const wpDir = "wp-content/themes/" + title + "/_assets/";
 //htdocsへのパス
-const distDir = "htdocs/taoya_common/js/";
+const distDir = process.env.ASSETS_PATH;
 
 module.exports = {
   cache: true,
   stats: "errors-only",
   entry: {
     //ここで設定したキーが出力時の[name]に入るので、パス込みでファイル名を記述する
-    [distDir + "taoya"]: "./src/_assets/js/index.js",
-    // [distDir + "app"]: "./src/_assets/js/top.js",
-    // [distDir + "js/ts"]: "./src/_assets/ts/index.ts",
-    [wpDir + "js/app"]: "./src/_assets/js/index.js",
-    // [wpDir + "js/ts"]: "./src/_assets/ts/index.ts",
+    [distDir + "js/app"]: "./src/_assets/js/index.ts",
+    // [wpDir + "js/ts"]: "./src/_assets/js/index.ts",
   },
   output: {
     path: __dirname,
