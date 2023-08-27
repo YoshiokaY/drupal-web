@@ -89,6 +89,7 @@ module.exports = {
       safelist: {
         //パージから除外するセレクタ
         standard: [/^slick/, /^lity/],
+        enabled: process.env.NODE_ENV === "production",
       },
     }),
   ],

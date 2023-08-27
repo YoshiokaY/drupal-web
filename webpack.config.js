@@ -38,7 +38,10 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"],
   },
-  target: ["web", "es5"],
+  target: ["web", "es2020"],
+  experiments: {
+    topLevelAwait: true,
+  },
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",

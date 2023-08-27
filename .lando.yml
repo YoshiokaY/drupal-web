@@ -1,11 +1,9 @@
-name: mydrupal
+name: lando-test
 recipe: drupal9
 config:
   webroot: web
   php: 8.1
-  via: apache:2.4
-  database: mysql:5.7
-
-# 環境変数をセットする
+  via: 'apache:2.4'
+  database: 'mysql:5.7'
 env_file:
   - .env

@@ -11,7 +11,7 @@ import "slick-carousel";
 // import "./utils/tab";
 // import "./utils/modal";
 // import "./utils/accordion";
-// import "./utils/style";
+// import "./utils/getJson";
 import "./lit/lit";
 // import "./utils/accordion";
 // import objectFitImages from 'object-fit-images';

@@ -8,5 +8,9 @@ htdocs/
 vendor
 tmp
 
+drupal/
+!drupal/web/themes/
+!drupal/web/modules/
+
 /.gitattributes
 node_modules
