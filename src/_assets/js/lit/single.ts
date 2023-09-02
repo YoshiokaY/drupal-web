@@ -6,14 +6,11 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 const news = "http://localhost:50476/jsonapi/node/news/";
 
 @customElement("my-element")
-export class MyElement extends LitElement {
+class MyElement extends LitElement {
   @property({ type: Object })
   //リアクティブな値（この値が変わったら再描画）を設定
   responseData: any;
   sortTitle: boolean = false;
-  news: boolean = false;
-  catId: string = "";
-  cat: string[] = ["お知らせ", "info"];
 
   //非同期処理でJSON APIを受け取る
   async connectedCallback() {
@@ -39,9 +36,6 @@ export class MyElement extends LitElement {
 
   static styles = css`
     /* ここにスタイルを定義する */
-    .txtHidden {
-      opacity: 0;
-    }
   `;
 
   render() {
@@ -53,19 +47,11 @@ export class MyElement extends LitElement {
     const content = this.responseData.data;
     const ASC_TEXT = "昇順";
     const DESC_TEXT = "降順";
-    const query = window.location.search.slice(4);
-    const page = window.location.pathname;
-    if (page === "/news/") {
-      this.news = true;
-      this.getJson(news + query);
-    }
     return html`
       <style>
         @import "/_assets/css/style.css";
       </style>
       <div class="contentInner">
-        ${this.news === false
-          ? html`
         <h2 class="c_ttl_h2">新着情報</h2>
         <dl class="newsList">
           ${content.map((item: any) => {
@@ -76,9 +62,9 @@ export class MyElement extends LitElement {
             const cat =
               cat_id == "da0ebc23-768e-445b-ae57-88de51ce1671"
                 ? ["お知らせ", "info"]
-                : cat_id == "0cf53627-0fa2-40d3-b78d-6eed417abbb0"
+                : cat_id == "d27d631b-65ef-4e52-8b67-7d9326898ddc"
                 ? ["ニュースリリース", "release"]
-                : ["採用情報", "recruitment"];
+                : ["イベント", "event"];
             return html`
               <div class="newsList_item">
                 <dt>
@@ -119,39 +105,6 @@ export class MyElement extends LitElement {
         </ul>
         <!-- <button @click=${this._handleFilter}>テストで絞り込み</button> -->
         <button @click=${this._handleFilter}>テストで絞り込み</button>
-      </div>
-        `
-          : html`
-              <p class="txtHidden">
-                ${(this.catId = content.relationships.field_category.data.id)}
-                ${(this.cat = "da0ebc23-768e-445b-ae57-88de51ce1671"
-                  ? ["お知らせ", "info"]
-                  : this.catId == "0cf53627-0fa2-40d3-b78d-6eed417abbb0"
-                  ? ["ニュースリリース", "release"]
-                  : ["採用情報", "recruitment"])}
-              </p>
-              <h1 class="c_ttl_h1">${content.attributes.title}</h1>
-              <ul>
-                <li>
-                  <time
-                    >${new Date(
-                      content.attributes.created
-                    ).toLocaleDateString()}</time
-                  >
-                </li>
-                <li>
-                  <span class="catBtn -${this.cat[1]}">${this.cat[0]}</span>
-                </li>
-              </ul>
-              <article>
-                ${unsafeHTML(
-                  content.attributes.body.value.replace(
-                    "/sites/",
-                    "http://localhost:50476/sites/"
-                  )
-                )}
-              </article>
-            `}
       </div>
     `;
   }
