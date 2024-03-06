@@ -3,7 +3,7 @@ import { property, customElement } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 //JSON API
-const news = "http://localhost:50476/jsonapi/node/news/";
+const news = "http://localhost:55969/jsonapi/node/news/";
 
 @customElement("my-element")
 class MyElement extends LitElement {

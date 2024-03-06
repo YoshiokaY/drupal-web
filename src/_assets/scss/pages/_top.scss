@@ -366,3 +366,43 @@
     }
   }
 }
+
+.archiveList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: start;
+  &_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc((100% - 2rem * 2) / 3);
+    padding: 1.5rem;
+    background-color: $bgBody;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 10px 1.5px rgba($colorText, 0.35);
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 800/600;
+      object-fit: cover;
+    }
+  }
+  &_txt {
+    margin: 1em auto 0;
+  }
+  h3 {
+    margin: 0.3em auto 0.5em;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+
+.pagerList {
+  display: flex;
+  gap: 0 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}

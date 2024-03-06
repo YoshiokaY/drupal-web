@@ -3,7 +3,12 @@ import { property, customElement } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 //JSON API
-const news = "http://localhost:50476/jsonapi/node/news/";
+const port = "49328";
+const news = "http://localhost:" + port + "/jsonapi/node/news/";
+const field = "?include=field_eyecatch&fields[file--file]=uri,url";
+
+const listQuota = 3;
+const pager = `&page[limit]=${listQuota}`;
 
 @customElement("my-element")
 export class MyElement extends LitElement {
@@ -14,11 +19,14 @@ export class MyElement extends LitElement {
   news: boolean = false;
   catId: string = "";
   cat: string[] = ["お知らせ", "info"];
+  page: string = "";
+  query: string = "";
+  limit: string = "&page[limit]=3";
 
   //非同期処理でJSON APIを受け取る
   async connectedCallback() {
     super.connectedCallback();
-    await this.getJson(news);
+    await this.getJson(news + field + this.limit);
   }
 
   //実際のJSON API参照
@@ -39,10 +47,16 @@ export class MyElement extends LitElement {
 
   static styles = css`
     /* ここにスタイルを定義する */
-    .txtHidden {
-      opacity: 0;
-    }
   `;
+  firstUpdated() {
+    this.query = window.location.search.slice(4);
+    this.page = window.location.pathname;
+    if (this.page === "/news/") {
+      this.news = true;
+      this.limit = "&page[limit]=3";
+      this.getJson(news + this.query + field + this.limit);
+    }
+  }
 
   render() {
     if (!this.responseData) {
@@ -51,14 +65,10 @@ export class MyElement extends LitElement {
 
     // JSON APIのdataキーを参照
     const content = this.responseData.data;
+    const include = this.responseData.included;
     const ASC_TEXT = "昇順";
     const DESC_TEXT = "降順";
-    const query = window.location.search.slice(4);
-    const page = window.location.pathname;
-    if (page === "/news/") {
-      this.news = true;
-      this.getJson(news + query);
-    }
+
     return html`
       <style>
         @import "/_assets/css/style.css";
@@ -121,15 +131,8 @@ export class MyElement extends LitElement {
         <button @click=${this._handleFilter}>テストで絞り込み</button>
       </div>
         `
-          : html`
-              <p class="txtHidden">
-                ${(this.catId = content.relationships.field_category.data.id)}
-                ${(this.cat = "da0ebc23-768e-445b-ae57-88de51ce1671"
-                  ? ["お知らせ", "info"]
-                  : this.catId == "0cf53627-0fa2-40d3-b78d-6eed417abbb0"
-                  ? ["ニュースリリース", "release"]
-                  : ["採用情報", "recruitment"])}
-              </p>
+          : this.query.length > 0
+          ? html`
               <h1 class="c_ttl_h1">${content.attributes.title}</h1>
               <ul>
                 <li>
@@ -144,13 +147,119 @@ export class MyElement extends LitElement {
                 </li>
               </ul>
               <article>
+                <figure>
+                  <img
+                    src="${content.relationships.field_eyecatch.data !== null
+                      ? this.responseData.included[0].attributes.uri.url.replace(
+                          "/sites/",
+                          "http://localhost:" + port + "/sites/"
+                        )
+                      : "/_assets/img/noimage.png"}"
+                  />
+                </figure>
                 ${unsafeHTML(
                   content.attributes.body.value.replace(
                     "/sites/",
-                    "http://localhost:50476/sites/"
+                    "http://localhost:" + port + "/sites/"
                   )
                 )}
               </article>
+            `
+          : html`
+              <h2 class="c_ttl_h2">記事一覧</h2>
+              <div class="archiveList">
+                ${content.map((item: any) => {
+                  function truncateText(str: string, len: number) {
+                    return str.length <= len ? str : str.substr(0, len) + "...";
+                  }
+                  //投稿日を任意の書式に変換
+                  const time = new Date(item.attributes.created);
+                  //カテゴリーのUUIDから名前とクラス名を変数に格納
+                  let cat_id = item.relationships.field_category.data.id;
+                  const cat =
+                    cat_id == "da0ebc23-768e-445b-ae57-88de51ce1671"
+                      ? ["お知らせ", "info"]
+                      : cat_id == "0cf53627-0fa2-40d3-b78d-6eed417abbb0"
+                      ? ["ニュースリリース", "release"]
+                      : ["採用情報", "recruitment"];
+                  let imgPath =
+                    item.relationships.field_eyecatch.data !== null
+                      ? include
+                          .filter(
+                            (obj: { id: any }) =>
+                              obj.id ===
+                              item.relationships.field_eyecatch.data.id
+                          )[0]
+                          .attributes.uri.url.replace(
+                            "/sites/",
+                            "http://localhost:" + port + "/sites/"
+                          )
+                      : "/_assets/img/noimage.png";
+                  return html`
+                    <div class="archiveList_item">
+                      <a href="/news/?id=${item.id}">
+                        <figure><img src=${imgPath} /></figure>
+                        <div class="archiveList_txt">
+                          <span class="catBtn -${cat[1]}" data-cat="${cat_id}"
+                            >${cat[0]}</span
+                          >
+                          <time>${time.toLocaleDateString()}</time>
+                          <h3>${item.attributes.title}</h3>
+                          <p>
+                            ${truncateText(
+                              item.attributes.body.value.replace(
+                                /(<([^>]+)>)/gi,
+                                ""
+                              ),
+                              30
+                            )}
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  `;
+                })}
+              </div>
+              <ul class="pagerList">
+                ${this.responseData.links.prev &&
+                html`
+                  <li>
+                    <button
+                      data-link="${this.responseData.links.prev.href}"
+                      @click=${this._handleLink}
+                    >
+                      前
+                    </button>
+                  </li>
+                `}
+                <li>
+                  <button
+                    data-link="${news + field + pager}"
+                    @click=${this._handleLink}
+                  >
+                    1
+                  </button>
+                </li>
+                <li>
+                  <button
+                    data-link="${news + field + pager + "&page[offset]=3"}"
+                    @click=${this._handleLink}
+                  >
+                    2
+                  </button>
+                </li>
+                ${this.responseData.links.next &&
+                html`
+                  <li>
+                    <button
+                      data-link="${this.responseData.links.next.href}"
+                      @click=${this._handleLink}
+                    >
+                      次
+                    </button>
+                  </li>
+                `}
+              </ul>
             `}
       </div>
     `;
@@ -177,5 +286,14 @@ export class MyElement extends LitElement {
     const filter =
       "?filter[label-a][condition][path]=title&filter[label-a][condition][operator]=CONTAINS&filter[label-a][condition][value]=テスト";
     await this.getJson(news + filter);
+  }
+  async _handleLink(e: Event) {
+    const target = e.currentTarget as HTMLElement;
+    //ソートボタンのdata属性によってソートルールをセット
+    const url = target.getAttribute("data-link");
+    console.log(url);
+    if (url) {
+      await this.getJson(url);
+    }
   }
 }

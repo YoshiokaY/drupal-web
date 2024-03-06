@@ -1,5 +1,5 @@
 //jsonを指定
-const archive = "http://localhost:50476/jsonapi/node/news/";
+const archive = "http://localhost:55969/jsonapi/node/news/";
 //表示箇所
 const dl = document.querySelector(".newsList");
 
@@ -84,7 +84,7 @@ const observer = new MutationObserver((mutations) => {
           const target = btn.getAttribute("data-cat");
           console.log(target);
           const url =
-            "http://localhost:50476/jsonapi/node/news?filter[field_katekori]=" +
+            "http://localhost:55969/jsonapi/node/news?filter[field_katekori]=" +
             target;
           getJson(url);
         });
@@ -108,7 +108,7 @@ acs.forEach((btn) => {
   btn.addEventListener("click", () => {
     const set = btn.getAttribute("data-sort");
     const desc = btn.getAttribute("data-desc");
-    const url = `http://localhost:50476/jsonapi/node/news/?sort[sort-${set}][path]=${set}`;
+    const url = `http://localhost:55969/jsonapi/node/news/?sort[sort-${set}][path]=${set}`;
     if (desc != "true") {
       getJson(url);
     } else {
@@ -119,7 +119,7 @@ acs.forEach((btn) => {
 
 const filters = document.querySelectorAll(".filterBtn");
 const filterurl =
-  "http://localhost:50476/jsonapi/node/news?filter[label-a][condition][path]=title&filter[label-a][condition][operator]=CONTAINS&filter[label-a][condition][value]=";
+  "http://localhost:58030/jsonapi/node/news?filter[label-a][condition][path]=title&filter[label-a][condition][operator]=CONTAINS&filter[label-a][condition][value]=";
 filters.forEach((filter) => {
   filter.addEventListener("click", () => {
     const set = filter.textContent;
@@ -129,57 +129,57 @@ filters.forEach((filter) => {
   });
 });
 
-// const query = window.location.search.slice(4);
-// const single = archive + query;
-// const news = document.getElementById("news_body");
-// // console.log(single);
-// async function getNews(url) {
-//   try {
-//     const response = await fetch(url);
-//     const json = await response.json();
-//     // const date = JSON.stringify(json);
-//     // eslint-disable-next-line no-console
-//     console.log(json);
-//     setNews(json.data, news);
-//     // setNews(json.data, news);
-//     // return json.data;
-//   } catch (error) {
-//     //200以外が返ってきた場合
-//     console.log("JSONを取得できませんでした：" + error);
-//     // setNews(null, dl);
-//     // return null;
-//   }
-// }
-// getNews(single);
+const query = window.location.search.slice(4);
+const single = archive + query;
+const news = document.getElementById("news_body");
+// console.log(single);
+async function getNews(url) {
+  try {
+    const response = await fetch(url);
+    const json = await response.json();
+    // const date = JSON.stringify(json);
+    // eslint-disable-next-line no-console
+    console.log(json);
+    setNews(json.data, news);
+    // setNews(json.data, news);
+    // return json.data;
+  } catch (error) {
+    //200以外が返ってきた場合
+    console.log("JSONを取得できませんでした：" + error);
+    // setNews(null, dl);
+    // return null;
+  }
+}
+getNews(single);
 
-// function setNews(dataList, el) {
-//   let html = "";
-//   if (dataList === null) {
-//     html +=
-//       "<p>記事取得中にエラーが発生しました。<br>時間をおいてから再度アクセスしてください。</p>";
-//   } else {
-//     const time = new Date(dataList.attributes.created);
-//     const cat_id = dataList.relationships.field_katekori.data.id;
-//     const cat =
-//       cat_id == "24a2aad5-8ae3-4251-aac4-b27d35f908b9"
-//         ? ["お知らせ", "info"]
-//         : cat_id == "d27d631b-65ef-4e52-8b67-7d9326898ddc"
-//         ? ["ニュースリリース", "release"]
-//         : ["イベント", "event"];
-//     const body = decodeURI(dataList.attributes.body.value).replace(
-//       "/sites/",
-//       "http://localhost:50476/sites/"
-//     );
-//     html += `<h1 class="c_ttl_h1">${dataList.attributes.title}</h1>`;
-//     html += '<section><div class="contentInner">';
-//     html += `<ul><li><time>${time.toLocaleDateString()}</time></li><li><span class="catBtn -${
-//       cat[1]
-//     }">${cat[0]}</span></li></ul>`;
-//     html += `<article>${body}</article>`;
-//     html += "</div></section>";
-//   }
-//   // HTMLに出力
-//   if (el) {
-//     el.innerHTML = html;
-//   }
-// }
+function setNews(dataList, el) {
+  let html = "";
+  if (dataList === null) {
+    html +=
+      "<p>記事取得中にエラーが発生しました。<br>時間をおいてから再度アクセスしてください。</p>";
+  } else {
+    const time = new Date(dataList.attributes.created);
+    const cat_id = dataList.relationships.field_katekori.data.id;
+    const cat =
+      cat_id == "24a2aad5-8ae3-4251-aac4-b27d35f908b9"
+        ? ["お知らせ", "info"]
+        : cat_id == "d27d631b-65ef-4e52-8b67-7d9326898ddc"
+        ? ["ニュースリリース", "release"]
+        : ["イベント", "event"];
+    const body = decodeURI(dataList.attributes.body.value).replace(
+      "/sites/",
+      "http://localhost:58030/sites/"
+    );
+    html += `<h1 class="c_ttl_h1">${dataList.attributes.title}</h1>`;
+    html += '<section><div class="contentInner">';
+    html += `<ul><li><time>${time.toLocaleDateString()}</time></li><li><span class="catBtn -${
+      cat[1]
+    }">${cat[0]}</span></li></ul>`;
+    html += `<article>${body}</article>`;
+    html += "</div></section>";
+  }
+  // HTMLに出力
+  if (el) {
+    el.innerHTML = html;
+  }
+}
